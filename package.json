@@ -1,0 +1,27 @@
+{
+  "name": "pandoraui",
+  "version": "0.0.1",
+  "description": "基于 nodejs express 管理的 front-end framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pandoraui/pandoraui.com.git"
+  },
+  "keywords": [
+    "pandoraui",
+    "nodejs",
+    "express",
+    "front-end",
+    "framework",
+    "web-components"
+  ],
+  "author": "PandoraUI team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pandoraui/pandoraui.com/issues"
+  },
+  "homepage": "https://github.com/pandoraui/pandoraui.com"
+}

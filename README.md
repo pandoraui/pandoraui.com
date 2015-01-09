@@ -21,25 +21,39 @@ Pandora 前端框架（以下简称 Pandora）是基于 [cnBootstrap](https://gi
 
 #### 仓库目录结构：
 
-    pandora
-    |- assets/          静态资源目录(css/img/js/less)
-    |- docs/            Pandora 项目文档
-    |- modules/         模块组件(**重点**)
-    |   |- 各对应独立项目，如：[button](https://github.com/pandoraui/button)
-    |
-    |- dist/
-    |- release/         稳定版本（css/js/icon/modules等）
-    |
-    |- solutions/       解决方案研究
-    |- plugins/         Pandora 快捷开发对应的编辑器插件 (规划中)
-    |- examples/        经典实现示例
-    |- test/            测试目录
-    |   |- demos/
-    |
-    |- labs/            前端实验室，用于pandora前端的实践
-    |- w3c/             HTML5/CSS3 标准文档 (详见原AliceUI)
-    |- templates/       模板
-    |- README.md
+```js
+pandora
+|- public        //此项目资源
+|   |- fonts
+|   |- icons
+|   |- images
+|
+|- src           //项目资源
+|   |- img
+|   |- sass
+|   |- js
+|
+|- view          //layout模板
+|- gulp
+|- _site         //生成UED稿
+|- vendor        //外部工具
+|
+|- dist          //用于生产的dist
+|- test          //集成测试
+|- tools         //工具箱
+|- modules       //模块组件(**重点**)
+|   |- module    //模块名，各对应独立项目，如：[button](https://github.com/pandoraui/button)
+|       |- src   //模块对应的资源
+|
+|- examples      //经典应用实例
+|- theme         //主题
+|- docs          //jsdoc自动生成的文档
+|- labs          //前端实验室，用于pandora前端的实践
+|   |- layout    //布局研究
+|   |- css3      //css3特效研究
+|
+|- README.md
+```
 
 #### 文档结构
 
