@@ -33,7 +33,7 @@ pandora
 |   |- sass
 |   |- js
 |
-|- view          //layout模板
+|- views         //layout模板
 |- gulp
 |- _site         //生成UED稿
 |- vendor        //外部工具
