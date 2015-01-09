@@ -19,19 +19,23 @@
     "web-components"
   ],
   "dependencies": {
-    "express": "~4.9.0",
     "body-parser": "~1.8.1",
     "cookie-parser": "~1.3.3",
-    "morgan": "~1.3.0",
-    "serve-favicon": "~2.1.3",
     "debug": "~2.0.0",
     "ejs": "~0.8.5",
-    "jade": "~1.6.0"
+    "express": "~4.9.0",
+    "jade": "~1.6.0",
+    "mockjs": "^0.1.4",
+    "morgan": "~1.3.0",
+    "serve-favicon": "~2.1.3"
   },
   "author": "PandoraUI team",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pandoraui/pandoraui.com/issues"
   },
-  "homepage": "https://github.com/pandoraui/pandoraui.com"
+  "homepage": "https://github.com/pandoraui/pandoraui.com",
+  "devDependencies": {
+    "encoding": "^0.1.11"
+  }
 }
