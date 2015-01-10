@@ -1358,7 +1358,9 @@ Prism.languages.markup = {
      * Public License, v. 2.0, a copy of which may be obtained at:
      * http://mozilla.org/MPL/2.0/
      */
-    function() {}.call(this),
+    function() {
+        console.log(this)
+    }.call(this),
     function() {
         var t, e, n, o, i, s, r, a, c, l, u, p, h, d;
         t = {
@@ -1574,6 +1576,7 @@ Prism.languages.markup = {
         }();
     }.call(this),
     function() {
+        //console.log(this)
         var t, e, n, o, i, s = [].slice;
         this.$ = function(t, e) {
             null == e && (e = document);
