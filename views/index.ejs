@@ -8,19 +8,40 @@
   <title>Developer's Guide</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/application.css">
+  <!--   <script src="/js/zepto.min.js"></script> -->
   <script src="/js/application.js"></script>
-  <script src="/js/docs.js"></script>
+  <!-- <script src="/js/prism.js"></script> -->
+  <!-- <script src="/js/docs.js"></script> -->
+  <!-- <script src="/js/fastclick.js"></script> -->
+  <!-- <script src="/js/app/app.js"></script> -->
+  <!--<script src="/js/application.js"></script>-->
 </head>
 <body class="_booting _noscript">
 <noscript class="_fail">Developer's Guide requires JavaScript to run.</noscript>
 <%- include app %>
 <script>
-//(function(){
-//  window.onload = function(){
-//    var body = document.getElementsByTagName('body')[0];
-//    body.className = '';
-//  }
-//})();
+// ;(function($){
+//     //阻塞等待10秒后返回
+//     function sleep(millliSeconds){
+//       var startTime=new Date().getTime();
+//       while(new Date().getTime()<startTime+millliSeconds);
+//     }
+//     //sleep(10000);
+//     //$('body').removeClass('_booting _noscript');
+//   // $.extend($.fn, {
+//   //   foo: function(){
+//   //     // `this` refers to the current Zepto collection.
+//   //     // When possible, return the Zepto collection to allow chaining.
+//   //     return this.html('bar')
+//   //   }
+//   // })
+// })(Zepto);
+// (function(){
+//   window.onload = function(){
+//     var body = document.getElementsByTagName('body')[0];
+//     body.className = '';
+//   }
+// })();
 </script>
 </body>
 </html>

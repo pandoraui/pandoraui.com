@@ -1,5 +1,11 @@
 var Mock = require("mockjs");
 
+//阻塞等待10秒后返回
+function sleep(millliSeconds){
+  var startTime=new Date().getTime();
+  while(new Date().getTime()<startTime+millliSeconds);
+}
+
 exports.index = function(req, res){
   var template = {
     "errno": 0,
@@ -31,5 +37,6 @@ exports.index = function(req, res){
   var jsonData = Mock.mock(template);
   //debugger;
   //console.log(jsonData);
+  //sleep(3000);
   res.render('index',{list: jsonData.data});
 };
