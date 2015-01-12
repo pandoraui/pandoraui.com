@@ -25,15 +25,15 @@ var spritesmith = require('gulp.spritesmith');
 
 // gulp  dev/build
 var env = '',
-    src_path = './src/',
-    out_path = './dest/';
+    src_path = './src/',    //源码路径
+    out_path = './dist/';   //打包路径
 switch(process.argv[3]){
   case '--dev':env = 'dev'; break;
   case '--build':env = 'build'; break;
 }
 
 if(env != 'build'){
-  out_path = './src/';
+  out_path = './dev/';
 }
 
 // 定义一些变量
@@ -56,14 +56,10 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-var sprite_files = './public/icons/*',
-    test_files = './public/test/';
-    
-
 // 雪碧图任务 合并icon图标
 gulp.task('sprite', function () {
   // Generate our spritesheet
-  var spriteData = gulp.src(sprite_files+'/*.png').pipe(spritesmith({
+  var spriteData = gulp.src(src_path + 'icons/*.png').pipe(spritesmith({
     imgName: 'icons.png',
     cssName: '_icons.sass'
   }));
@@ -71,16 +67,16 @@ gulp.task('sprite', function () {
   // Pipe image stream through image optimizer and onto disk
   spriteData.img
     .pipe(imagemin())
-    .pipe(gulp.dest(out_path+'images/'));
+    .pipe(gulp.dest(out_path + 'img/'));
 
   // Pipe CSS stream through CSS optimizer and onto disk
   spriteData.css
     .pipe(csso())
-    .pipe(gulp.dest(out_path+'css/'));
+    .pipe(gulp.dest(out_path + 'sass/'));
 });
 
 gulp.task('images', function() {  
-  return gulp.src(src_path+'images/**/*')
+  return gulp.src(src_path + 'images/**/*')
     .pipe(cache(
       imagemin({
         optimizationLevel: 5,
@@ -88,7 +84,7 @@ gulp.task('images', function() {
         interlaced: true 
       })
     ))
-    .pipe(gulp.dest(out_path + 'img/'))
+    .pipe(gulp.dest(out_path + 'images/'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
