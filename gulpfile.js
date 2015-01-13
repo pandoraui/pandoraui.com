@@ -16,8 +16,10 @@ var sass = require('gulp-ruby-sass'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     imagemin = require('gulp-imagemin'),    //图片压缩
+    pngquant = require('imagemin-pngquant'),
     clean = require('gulp-clean'),          //进行部署之前，清除dest目录并重建档案
     cache = require('gulp-cache'),          //快取gulp-cache外挂，只有新的或更动的图片会被压缩
+    sprite = require('css-sprites-extend').stream,
     livereload = require('gulp-livereload');
 
 //雪碧图需要引用
@@ -29,7 +31,7 @@ var sass = require('gulp-ruby-sass'),
 // gulp  dev/build
 var env = '',
     src_path = './src/',    //源码路径
-    out_path = './dist/';   //打包路径
+    out_path = './dest/';   //打包路径
 switch(process.argv[3]){
   case '--dev':env = 'dev'; break;
   case '--build':env = 'build'; break;
@@ -77,23 +79,66 @@ gulp.task('clean', function() {
 //     .pipe(csso())
 //     .pipe(gulp.dest(out_path + 'sass/'));
 // });
+// generate sprite.png and _sprite.scss
+gulp.task('sprite', function () {
+  return gulp.src(src_path + 'sprite/*.png')
+    .pipe(sprite({
+      src: null,
+      out: 'css',
+      prefix: '_icon',
+      name: '_icons',
+      style: '_icons.scss',
+      format: 'png',
+      cssPath: '../images',
+      processor: 'scss',
+      template: src_path + 'scss.template.mustache',             //'scss.mustache'
+      //retina: true,
+      algorithm: 'binary-tree',     //binary-tree
+      //retina: false,
+      //background: '#FFFFFF',
+      //opacity: 0,
+      margin: 0
+    }))
+    .pipe(gulpif('*.png',
+      gulp.dest(out_path + 'images/'),
+      gulp.dest(out_path + 'scss/')
+    ))
+    .pipe(notify({ message: 'Sprite task complete' }));
+});
 
+// generate scss with base64 encoded images
+gulp.task('base64', function () {
+  return gulp.src(src_path + 'sprite/*.png')
+    .pipe(sprite({
+      base64: true,
+      style: '_base64.css',
+      processor: 'css'
+    }))
+    .pipe(gulp.dest(out_path + 'css/'));
+});
+
+// 设定图片压缩 仅压缩图片质量(用于sprite任务之后)
 gulp.task('images', function() {
-  return gulp.src(src_path + 'images/**/*')
+  return gulp.src(out_path + 'images/*')
     .pipe(cache(
+      // imagemin({
+      //   progressive: true,
+      //   svgoPlugins: [{removeViewBox: false}],
+      //   use: [pngquant()]
+      // })
       imagemin({
-        optimizationLevel: 5,
+        optimizationLevel: 3,
         progressive: true,
-        interlaced: true 
+        interlaced: true
       })
     ))
-    .pipe(gulp.dest(out_path + 'images/'))
+    .pipe(gulp.dest(out_path + 'images'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
 // Sass任务 编译Sass
 gulp.task('styles', function() {
-  gulp.src(static_sass)
+  gulp.src(src_path + 'sass/app.scss')
       // @style: nested,compact,expanded,compressed
     .pipe(sass({style:'expanded'}))
     //.pipe(autoprefixer())
