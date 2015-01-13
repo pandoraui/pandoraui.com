@@ -1,4 +1,7 @@
 
+// 安装打包依赖
+// npm install gulp gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-uglify gulp-if gulp-rename gulp-concat gulp-notify gulp-imagemin gulp-clean gulp-cache gulp-livereload gulp-csso --save-dev
+
 // 引入 gulp
 var gulp = require('gulp'); 
 
@@ -18,9 +21,9 @@ var sass = require('gulp-ruby-sass'),
     livereload = require('gulp-livereload');
 
 //雪碧图需要引用
-var csso = require('gulp-csso');
-var imagemin = require('gulp-imagemin');
-var spritesmith = require('gulp.spritesmith');
+// var csso = require('gulp-csso');
+// var imagemin = require('gulp-imagemin');
+// var spritesmith = require('gulp.spritesmith');
 
 
 // gulp  dev/build
@@ -51,31 +54,31 @@ gulp.task('lint', function() {
 });
 
 // 清除任务 部署前清除目标文件
-gulp.task('clean', function() {  
+gulp.task('clean', function() {
   return gulp.src([(out_path+'css/'), (out_path+'js/'), (out_path+'img/')], {read: false})
     .pipe(clean());
 });
 
 // 雪碧图任务 合并icon图标
-gulp.task('sprite', function () {
-  // Generate our spritesheet
-  var spriteData = gulp.src(src_path + 'icons/*.png').pipe(spritesmith({
-    imgName: 'icons.png',
-    cssName: '_icons.sass'
-  }));
+// gulp.task('sprite', function () {
+//   // Generate our spritesheet
+//   var spriteData = gulp.src(src_path + 'icons/*.png').pipe(spritesmith({
+//     imgName: 'icons.png',
+//     cssName: '_icons.sass'
+//   }));
 
-  // Pipe image stream through image optimizer and onto disk
-  spriteData.img
-    .pipe(imagemin())
-    .pipe(gulp.dest(out_path + 'img/'));
+//   // Pipe image stream through image optimizer and onto disk
+//   spriteData.img
+//     .pipe(imagemin())
+//     .pipe(gulp.dest(out_path + 'img/'));
 
-  // Pipe CSS stream through CSS optimizer and onto disk
-  spriteData.css
-    .pipe(csso())
-    .pipe(gulp.dest(out_path + 'sass/'));
-});
+//   // Pipe CSS stream through CSS optimizer and onto disk
+//   spriteData.css
+//     .pipe(csso())
+//     .pipe(gulp.dest(out_path + 'sass/'));
+// });
 
-gulp.task('images', function() {  
+gulp.task('images', function() {
   return gulp.src(src_path + 'images/**/*')
     .pipe(cache(
       imagemin({
@@ -114,10 +117,10 @@ gulp.task('styles', function() {
 //         .pipe(uglify())
 //         .pipe(gulp.dest('./dist'));
 // });
-gulp.task('scripts', function() {  
-  gulp.src(src_path + '**/*.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
+gulp.task('scripts', function() {
+  gulp.src(src_path + 'js/**/*.js')
+    //.pipe(jshint('.jshintrc'))
+    //.pipe(jshint.reporter('default'))
     .pipe(concat('all.js'))
     .pipe(gulp.dest(out_path + 'js/'))
     .pipe(rename({suffix: '.min'}))
@@ -127,7 +130,7 @@ gulp.task('scripts', function() {
 });
 
 // 预设任务
-gulp.task('default', ['clean'], function() {  
+gulp.task('default', ['clean'], function() {
   gulp.start('styles');
   //gulp.run('styles');
   

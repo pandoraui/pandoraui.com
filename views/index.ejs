@@ -8,7 +8,7 @@
   <title>Developer's Guide</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/application.css">
-  <script src="/js/zepto.min.js"></script>
+  <script src="/js/vendor/zepto.min.js"></script>
   <!-- <script src="/js/app.js"></script> -->
   <!-- <script src="/js/prism.js"></script> -->
   <!-- <script src="/js/docs.js"></script> -->
@@ -26,6 +26,12 @@
     }
     //sleep(10000);
   $('body').removeClass('_booting _noscript');
+  $('.card').delegate('.flip','mouseover',function(){
+    $(this).addClass('flipToBack').removeClass('flipToFront');
+  });
+  $('.card').delegate('.flip','mouseleave',function(){
+    $(this).addClass('flipToFront').removeClass('flipToBack');
+  });
   // $.extend($.fn, {
   //   foo: function(){
   //     // `this` refers to the current Zepto collection.
