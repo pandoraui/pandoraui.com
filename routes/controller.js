@@ -1,4 +1,4 @@
-//controller
+//默认路由都是index方法，扫描当前目录，根据文件名来确认路由文件
 var fs = require("fs");
 var path = require("path");
 var cmd = path.dirname(__filename);
@@ -16,4 +16,3 @@ routers.forEach(function(filename){
 module.exports = {
 	controller : controller
 }
-
