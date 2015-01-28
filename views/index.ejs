@@ -13,20 +13,106 @@
 <body class="_booting _noscript">
 <noscript class="_fail">Developer's Guide requires JavaScript to run.</noscript>
 <%- include app %>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   var sideBarData = <%-JSON.stringify(list, null, 4)%>;
+</script> -->
+<script>
+  var App = {};
 </script>
-<script src="/js/farman.libs.js"></script>
-<script src="/js/farman.sea-mods.js"></script>
-<script src="/js/farman.page.js"></script>
-<script type="text/javascript">
-  seajs.use(["app","routes"], function(App, routes){
-    var appInstance = App.newInstance([routes], "index");
+<script src="/js/sea-debug.js"></script>
+<script src="/js/lib/util.js"></script>
+<script src="/js/lib/store.js"></script>
+<script src="/js/lib/events.js"></script>
+<!-- <script src="/js/lib/events.js"></script> -->
+<script src="/js/app/app.js"></script>
+<script src="/js/app/appcache.js"></script>
+<script src="/js/app/settings.js"></script>
+<script src="/js/collections/collection.js"></script>
+<script src="/js/collections/docs.js"></script>
+<script src="/js/collections/entries.js"></script>
+<script src="/js/app/router.js"></script>
+<!-- <script src="/js/app/searcher.js"></script> -->
+<script src="/js/lib/page.js"></script>
+<script src="/js/app/shortcuts.js"></script>
+<script src="/js/views/view.js"></script>
+<script src="/js/views/layout/nav.js"></script>
+<script src="/js/views/content/content.js"></script>
+<script src="/js/views/sidebar/sidebar.js"></script>
+<script src="/js/views/sidebar/sidebar_hover.js"></script>
+<script src="/js/views/layout/document.js"></script>
+<script src="/js/views/sidebar/results.js"></script>
+<script src="/js/views/sidebar/doc_list.js"></script>
+<script src="/js/views/list/list_select.js"></script>
+<script src="/js/views/list/list_fold.js"></script>
+<script src="/js/views/list/list_focus.js"></script>
+<script src="/js/views/sidebar/doc_picker.js"></script>
+<script src="/js/views/content/root_page.js"></script>
 
-    appInstance.fire("start");
-    appInstance.hideLoading();
-    this.Farman = appInstance;
-  });
+<script src="/js/templates/base.js"></script>
+<script src="/js/templates/pages/root_tmpl.js"></script>
+<script src="/js/views/content/static_page.js"></script>
+<script src="/js/views/content/offline_page.js"></script>
+<script src="/js/views/content/type_page.js"></script>
+<script src="/js/views/content/entry_page.js"></script>
+<script src="/js/views/layout/path.js"></script>
+<script src="/js/templates/error_tmpl.js"></script>
+<!-- <script src="/js/views/templates/sidebar_tmpl.js"></script>
+<script src="/js/views/templates/pages/root_tmpl.js"></script> -->
+
+
+<script src="/js/app/config.js"></script>
+<script src="/js/app/db.js"></script>
+<script src="/js/app/searcher.js"></script>
+<script src="/js/views/search/search.js"></script>
+<script src="/js/views/search/search_scope.js"></script>
+<script src="/js/application.js"></script>
+
+
+<!-- <script src="/js/farman.libs.js"></script>
+<script src="/js/farman.sea-mods.js"></script>
+<script src="/js/farman.page.js"></script> -->
+<script type="text/javascript">
+// seajs 的简单配置
+seajs.config({
+  base: "./js/vendor/",
+  alias: {
+    "underscore": "underscore",
+    "fastclick": "fastclick",
+    "prism": "prism",
+    "zepto": "zepto",
+    "raven": "raven",
+    "debug": "debug"
+  }
+})
+
+// 加载入口模块
+// seajs.use("debug");
+
+/*
+// 所有模块都通过 define 来定义
+define(function(require, exports, module) {
+
+  // 通过 require 引入依赖
+  var $ = require('jquery');
+  var Spinning = require('./spinning');
+
+  // 通过 exports 对外提供接口
+  exports.doSomething = ...
+
+  // 或者通过 module.exports 提供整个接口
+  module.exports = ...
+
+});
+*/
+
+  // seajs.use(["app","routes"], function(App, routes){
+  //   var appInstance = App.newInstance([routes], "index");
+
+  //   appInstance.fire("start");
+  //   appInstance.hideLoading();
+  //   this.Farman = appInstance;
+  // });
+  // 
 </script>
 </body>
 </html>

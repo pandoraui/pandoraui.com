@@ -18,10 +18,13 @@
     </nav>
   </header>
   <section class="_sidebar">
-    
+    <div class="_list">
+      <%list.forEach(function(v,i){%>
+        <a href="/<%= v.slug %>/" class="_list-item _icon-<%= v.icon %> _list-dir"><span class="_list-arrow"></span><%= v.name %></a>
+      <%})%>
+    </div>
   </section>
-  <section class="_container">
-    <!--<div class="_content _content-loading">-->
+  <section class="_container _content-loading">
     <div class="_content">
         <%- include list-fav %>
     </div>
