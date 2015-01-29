@@ -37,6 +37,8 @@
     return result;
   };
 
-  app.news = App.news.to_json;
+  //app.news = App.news.to_json;
+  console.log(App.news)
+  app.news = App.news || [];
 
 }).call(this);

@@ -5,6 +5,7 @@
   app.templates.render = function() {
     var args, name, result, template, val, value, _i, _len;
     name = arguments[0], value = arguments[1], args = 3 <= arguments.length ? __slice.call(arguments, 2) : [];
+    console.log(name);
     template = app.templates[name];
     if (Array.isArray(value)) {
       result = '';
