@@ -69,7 +69,7 @@
       }
     },
     bootOne: function() {
-      console.log(this.DOC);
+      console.log('Doc length: '+this.DOC.length);
       this.doc = new app.models.Doc(this.DOC);
       this.docs.reset([this.doc]);
       this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
@@ -79,7 +79,7 @@
       delete this.DOC;
     },
     bootAll: function() {
-      console.log(this.DOCS);
+      console.log('Docs length: '+this.DOCS.length);
       var doc, docs, _i, _len, _ref;
       docs = this.settings.getDocs();
       _ref = this.DOCS;
@@ -87,6 +87,7 @@
         doc = _ref[_i];
         (docs.indexOf(doc.slug) >= 0 ? this.docs : this.disabledDocs).add(doc);
       }
+      console.log('去排序');
       this.docs.sort();
       this.disabledDocs.sort();
       this.docs.load(this.start.bind(this), this.onBootError.bind(this), {

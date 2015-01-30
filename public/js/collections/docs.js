@@ -19,8 +19,8 @@
       var rank = rank || 'rank';
       console.log("按" + rank + "排序");
       return this.models.sort(function(a, b) {
-        a = !isNaN(a[rank]) ? a[rank]: a[rank].toLowerCase();
-        b = !isNaN(b[rank]) ? b[rank]: b[rank].toLowerCase();
+        a = a[rank].toString().toLowerCase();
+        b = b[rank].toString().toLowerCase();
         if (a < b) {
           return -1;
         } else if (a > b) {

@@ -1,5 +1,5 @@
 app.config = {
-  default_docs: ['html', 'css', 'javascript', 'framework', 'lib', 'books', 'tutorial', 'wheel', 'panning'],
+  default_docs: ['html', 'css', 'javascript', 'algorithm', 'tutorial', 'wheel', 'panning'],
   docs_host: App.docs_host,
   env: App.environment,
   history_cache_size: 10,
