@@ -15,10 +15,12 @@
 
     Docs.model = 'Doc';
 
-    Docs.prototype.sort = function() {
+    Docs.prototype.sort = function(rank) {
+      var rank = rank || 'rank';
+      console.log("按" + rank + "排序");
       return this.models.sort(function(a, b) {
-        a = a.name.toLowerCase();
-        b = b.name.toLowerCase();
+        a = !isNaN(a[rank]) ? a[rank]: a[rank].toLowerCase();
+        b = !isNaN(b[rank]) ? b[rank]: b[rank].toLowerCase();
         if (a < b) {
           return -1;
         } else if (a > b) {

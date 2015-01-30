@@ -38,7 +38,7 @@
   };
 
   //app.news = App.news.to_json;
-  console.log(App.news)
+  console.log('Get: App.news')
   app.news = App.news || [];
 
 }).call(this);

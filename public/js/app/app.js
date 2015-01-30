@@ -69,6 +69,7 @@
       }
     },
     bootOne: function() {
+      console.log(this.DOC);
       this.doc = new app.models.Doc(this.DOC);
       this.docs.reset([this.doc]);
       this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
@@ -78,6 +79,7 @@
       delete this.DOC;
     },
     bootAll: function() {
+      console.log(this.DOCS);
       var doc, docs, _i, _len, _ref;
       docs = this.settings.getDocs();
       _ref = this.DOCS;

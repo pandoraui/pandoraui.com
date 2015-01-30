@@ -1,6 +1,6 @@
 
 // 安装打包依赖
-// npm install gulp gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-uglify gulp-if gulp-rename gulp-concat gulp-notify gulp-imagemin gulp-clean gulp-cache gulp-livereload gulp-csso --save-dev
+// npm install gulp gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-seajs-transport gulp-jshint gulp-uglify gulp-if gulp-rename gulp-concat gulp-notify gulp-imagemin gulp-clean gulp-cache gulp-livereload gulp-csso --save-dev
 
 // 引入 gulp
 var gulp = require('gulp'); 

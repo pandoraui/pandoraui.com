@@ -5,7 +5,7 @@
  * Public License, v. 2.0, a copy of which may be obtained at:
  * http://mozilla.org/MPL/2.0/
  */
-._list-link:after, ._page a[href^="http:"]:after, ._page a[href^="https:"]:after, ._search:before, ._search-clear:before, ._notif-close:before, ._list-item:before, ._list-arrow:before, ._sidebar-footer-link:before, ._path-item:first-child:before, ._path-item + ._path-item:after, ._home-link:before, ._menu-link:before {
+._list-link:after, ._page a[href^="http:"]:after, ._page a[href^="https:"]:after, ._search:before, ._search-clear:before, ._notif-close:before, ._list-item:before, ._list-arrow:before, ._sidebar-footer-link:before, ._docs-name:before, ._path-item:first-child:before, ._path-item + ._path-item:after, ._home-link:before, ._menu-link:before {
   content: '';
   display: block;
   width: 1rem;
@@ -15,7 +15,7 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-  ._list-link:after, ._page a[href^="http:"]:after, ._page a[href^="https:"]:after, ._search:before, ._search-clear:before, ._notif-close:before, ._list-item:before, ._list-arrow:before, ._sidebar-footer-link:before, ._path-item:first-child:before, ._path-item + ._path-item:after, ._home-link:before, ._menu-link:before {
+  ._list-link:after, ._page a[href^="http:"]:after, ._page a[href^="https:"]:after, ._search:before, ._search-clear:before, ._notif-close:before, ._list-item:before, ._list-arrow:before, ._sidebar-footer-link:before, ._docs-name:before, ._path-item:first-child:before, ._path-item + ._path-item:after, ._home-link:before, ._menu-link:before {
     background-image: url("../images/icons@2x.png");
   }
 }
@@ -295,7 +295,7 @@ input, ._app, ._search, ._notif, ._logo-info, ._list, ._list-hover.clone, ._side
   user-select: none;
 }
 
-pre, ._toc, ._mobile-nav {
+pre, ._toc, ._docs-links, ._mobile-nav {
   background: #fafafa;
   border: 1px solid #d8d8d8;
   border-radius: 3px;
@@ -674,6 +674,12 @@ input[type="search"]::-webkit-search-decoration {
   padding: 0 1.25rem;
   color: inherit;
   text-decoration: none;
+}
+@media (max-width: 800px) {
+  ._nav-link,
+  ._nav-link:hover {
+    padding: 0 .75rem;
+  }
 }
 
 ._nav-link:before, ._nav-link:after {
@@ -1417,6 +1423,71 @@ input[type="search"]::-webkit-search-decoration {
   white-space: nowrap;
 }
 
+._docs {
+  width: 100%;
+  margin-top: .75rem;
+  line-height: 1.5rem;
+}
+._docs th, ._docs td {
+  width: 1%;
+  white-space: nowrap;
+}
+._docs th:first-child, ._docs td:first-child {
+  width: auto;
+}
+._docs th:last-child, ._docs td:last-child {
+  width: 12rem;
+}
+._docs td > a {
+  cursor: pointer;
+}
+
+._docs-name:before {
+  float: left;
+  margin: .25rem .5rem .25rem 0;
+}
+
+._docs-size {
+  text-align: right;
+}
+
+._docs-tools {
+  overflow: hidden;
+  line-height: 1.5rem;
+}
+
+._docs-links {
+  float: right;
+  padding: .375rem .125rem;
+}
+
+._docs-link {
+  display: none;
+  vertical-align: top;
+  padding: 0 .75rem;
+  cursor: pointer;
+}
+._docs-link._show {
+  display: inline-block;
+}
+._docs-link._show ~ ._docs-link._show {
+  border-left: 1px solid #d8d8d8;
+}
+
+._docs-label {
+  display: block;
+  overflow: hidden;
+  margin: 1px 0;
+  padding: .375rem .5rem;
+}
+._docs-label > input {
+  display: inline-block;
+  vertical-align: top;
+  margin: .25rem;
+  width: 1rem;
+  height: 1rem;
+}
+
 ._content ._news-row {
   position: relative;
   padding-left: 10em;
@@ -1914,12 +1985,9 @@ input[type="search"]::-webkit-search-decoration {
 
 ._mobile-nav-link {
   float: left;
-  width: 33%;
+  width: 25%;
   text-align: center;
   font-weight: bold;
-}
-._mobile-nav-link:nth-child(2n) {
-  width: 34%;
 }
 
 ._mobile-intro > ._intro-list {
