@@ -11,19 +11,19 @@
     views: {},
     init: function() {
       console.log("init");
-      try {
-        this.initErrorTracking();
-      } catch (_error) {
+      // try {
+      //   this.initErrorTracking();
+      // } catch (_error) {
 
-      }
-      if (!this.browserCheck()) {
-        return;
-      }
+      // }
+      // if (!this.browserCheck()) {
+      //   return;
+      // }
       this.showLoading();
       this.store = new Store;
-      if (app.AppCache.isEnabled()) {
-        this.appCache = new app.AppCache;
-      }
+      // if (app.AppCache.isEnabled()) {
+      //   this.appCache = new app.AppCache;
+      // }
       this.settings = new app.Settings(this.store);
       this.docs = new app.collections.Docs;
       this.disabledDocs = new app.collections.Docs;
@@ -31,12 +31,12 @@
       this.router = new app.Router;
       this.shortcuts = new app.Shortcuts;
       this.document = new app.views.Document;
-      if (this.isMobile()) {
-        this.mobile = new app.views.Mobile;
-      }
-      if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
-        document.documentElement.style.height = "" + window.innerHeight + "px";
-      }
+      // if (this.isMobile()) {
+      //   this.mobile = new app.views.Mobile;
+      // }
+      // if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+      //   document.documentElement.style.height = "" + window.innerHeight + "px";
+      // }
       if (this.DOC) {
         this.bootOne();
       } else if (this.DOCS) {
@@ -45,36 +45,36 @@
         this.onBootError();
       }
     },
-    browserCheck: function() {
-      if (this.isSupportedBrowser()) {
-        return true;
-      }
-      document.body.className = '';
-      document.body.innerHTML = app.templates.unsupportedBrowser;
-      return false;
-    },
-    initErrorTracking: function() {
-      if (this.isInvalidLocation()) {
-        new app.views.Notif('InvalidLocation');
-      } else {
-        if (this.config.sentry_dsn) {
-          Raven.config(this.config.sentry_dsn, {
-            whitelistUrls: [/devdocs/],
-            includePaths: [/devdocs/],
-            ignoreErrors: [/dpQuery/]
-          }).install();
-        }
-        this.previousErrorHandler = onerror;
-        window.onerror = this.onWindowError.bind(this);
-      }
-    },
+    // browserCheck: function() {
+    //   if (this.isSupportedBrowser()) {
+    //     return true;
+    //   }
+    //   document.body.className = '';
+    //   document.body.innerHTML = app.templates.unsupportedBrowser;
+    //   return false;
+    // },
+    // initErrorTracking: function() {
+    //   if (this.isInvalidLocation()) {
+    //     new app.views.Notif('InvalidLocation');
+    //   } else {
+    //     if (this.config.sentry_dsn) {
+    //       Raven.config(this.config.sentry_dsn, {
+    //         whitelistUrls: [/devdocs/],
+    //         includePaths: [/devdocs/],
+    //         ignoreErrors: [/dpQuery/]
+    //       }).install();
+    //     }
+    //     this.previousErrorHandler = onerror;
+    //     window.onerror = this.onWindowError.bind(this);
+    //   }
+    // },
     bootOne: function() {
       console.log('Doc length: '+this.DOC.length);
       this.doc = new app.models.Doc(this.DOC);
       this.docs.reset([this.doc]);
-      this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
-        readCache: true
-      });
+      // this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
+      //   readCache: true
+      // });
       new app.views.Notice('singleDoc', this.doc);
       delete this.DOC;
     },
@@ -109,45 +109,45 @@
         }
         this.entries.add(doc.entries.all());
       }
-      this.db = new app.DB();
+      //this.db = new app.DB();
       this.trigger('ready');
       this.router.start();
       this.hideLoading();
-      if (!this.doc) {
-        this.welcomeBack();
-      }
-      this.removeEvent('ready bootError');
+      // if (!this.doc) {
+      //   this.welcomeBack();
+      // }
+      // this.removeEvent('ready bootError');
     },
-    welcomeBack: function() {
-      var visitCount;
-      visitCount = this.settings.get('count');
-      this.settings.set('count', ++visitCount);
-      if (visitCount === 5) {
-        new app.views.Notif('Share', {
-          autoHide: null
-        });
-      }
-      if (visitCount === 10) {
-        new app.views.Notif('Thanks', {
-          autoHide: null
-        });
-      }
-      new app.views.News();
-      return this.checkForDocUpdates();
-    },
-    checkForDocUpdates: function() {
-      if (this.settings.get('autoUpdate')) {
-        return this.docs.updateInBackground();
-      } else {
-        return this.docs.checkForUpdates(function(i) {
-          if (i > 0) {
-            return new app.views.Notif('UpdateDocs', {
-              autoHide: null
-            });
-          }
-        });
-      }
-    },
+    // welcomeBack: function() {
+    //   var visitCount;
+    //   visitCount = this.settings.get('count');
+    //   this.settings.set('count', ++visitCount);
+    //   if (visitCount === 5) {
+    //     new app.views.Notif('Share', {
+    //       autoHide: null
+    //     });
+    //   }
+    //   if (visitCount === 10) {
+    //     new app.views.Notif('Thanks', {
+    //       autoHide: null
+    //     });
+    //   }
+    //   new app.views.News();
+    //   return this.checkForDocUpdates();
+    // },
+    // checkForDocUpdates: function() {
+    //   if (this.settings.get('autoUpdate')) {
+    //     return this.docs.updateInBackground();
+    //   } else {
+    //     return this.docs.checkForUpdates(function(i) {
+    //       if (i > 0) {
+    //         return new app.views.Notif('UpdateDocs', {
+    //           autoHide: null
+    //         });
+    //       }
+    //     });
+    //   }
+    // },
     reload: function() {
       this.docs.clearCache();
       this.disabledDocs.clearCache();
@@ -211,39 +211,39 @@
     isAppError: function(error, file) {
       return file && file.indexOf('devdocs') !== -1 && file.indexOf('.js') === file.length - 3;
     },
-    isSupportedBrowser: function() {
-      var error, features, key, value;
-      try {
-        features = {
-          bind: !!Function.prototype.bind,
-          pushState: !!history.pushState,
-          matchMedia: !!window.matchMedia,
-          classList: !!document.body.classList,
-          insertAdjacentHTML: !!document.body.insertAdjacentHTML,
-          defaultPrevented: document.createEvent('CustomEvent').defaultPrevented === false,
-          cssGradients: supportsCssGradients()
-        };
-        for (key in features) {
-          value = features[key];
-          if (!(!value)) {
-            continue;
-          }
-          //TODO: Raven? https://github.com/getsentry/raven-js
-          //Raven.captureMessage("unsupported/" + key);
-          return false;
-        }
-        return true;
-      } catch (_error) {
-        error = _error;
-        //TODO: Raven?
-        // Raven.captureMessage('unsupported/exception', {
-        //   extra: {
-        //     error: error
-        //   }
-        // });
-        return false;
-      }
-    },
+    // isSupportedBrowser: function() {
+    //   var error, features, key, value;
+    //   try {
+    //     features = {
+    //       bind: !!Function.prototype.bind,
+    //       pushState: !!history.pushState,
+    //       matchMedia: !!window.matchMedia,
+    //       classList: !!document.body.classList,
+    //       insertAdjacentHTML: !!document.body.insertAdjacentHTML,
+    //       defaultPrevented: document.createEvent('CustomEvent').defaultPrevented === false,
+    //       cssGradients: supportsCssGradients()
+    //     };
+    //     for (key in features) {
+    //       value = features[key];
+    //       if (!(!value)) {
+    //         continue;
+    //       }
+    //       //TODO: Raven? https://github.com/getsentry/raven-js
+    //       //Raven.captureMessage("unsupported/" + key);
+    //       return false;
+    //     }
+    //     return true;
+    //   } catch (_error) {
+    //     error = _error;
+    //     //TODO: Raven?
+    //     // Raven.captureMessage('unsupported/exception', {
+    //     //   extra: {
+    //     //     error: error
+    //     //   }
+    //     // });
+    //     return false;
+    //   }
+    // },
     isSingleDoc: function() {
       return !!(this.DOC || this.doc);
     },
