@@ -18,6 +18,12 @@
     Docs.prototype.sort = function(rank) {
       var rank = rank || 'rank';
       console.log("按" + rank + "排序");
+      /*
+        如果序号相等，超过11个数量后，排序后的结果并不是初始排序的状态
+        第一个元素和中间元素相等，则中间元素排序第一
+        可参见 test/sort.js 测试示例
+        所里这里rank值不能默认取一样的数字 ！！！
+      **/
       return this.models.sort(function(a, b) {
         a = a[rank].toString().toLowerCase();
         b = b[rank].toString().toLowerCase();
@@ -34,11 +40,13 @@
     CONCURRENCY = 3;
 
     Docs.prototype.load = function(onComplete, onError, options) {
+      console.log('Docs load')
       var fail, i, next, _i;
       i = 0;
       next = (function(_this) {
         return function() {
           if (i < _this.models.length) {
+            console.log(_this.models[i].name)
             _this.models[i].load(next, fail, options);
           } else if (i === _this.models.length + CONCURRENCY - 1) {
             onComplete();
@@ -56,6 +64,7 @@
         next();
       };
       for (_i = 0; 0 <= CONCURRENCY ? _i < CONCURRENCY : _i > CONCURRENCY; 0 <= CONCURRENCY ? _i++ : _i--) {
+        console.log('next');
         next();
       }
     };

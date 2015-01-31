@@ -17,9 +17,14 @@
   var sideBarData = <%-JSON.stringify(list, null, 4)%>;
 </script> -->
 <script>
-  var App = {};
+var App = {
+    docs_host: '',//http://baidu.com',//'localhost:3000',
+    environment: 'dev',
+    docs_prefix: 'data',
+    version: ''
+};
 </script>
-<script src="/js/sea-debug.js"></script>
+<!-- <script src="/js/sea-debug.js"></script> -->
 <script src="/js/lib/util.js"></script>
 <script src="/js/lib/store.js"></script>
 <script src="/js/lib/events.js"></script>
@@ -97,17 +102,17 @@
 <script src="/js/farman.page.js"></script> -->
 <script type="text/javascript">
 // seajs 的简单配置
-seajs.config({
-  base: "./js/vendor/",
-  alias: {
-    "underscore": "underscore",
-    "fastclick": "fastclick",
-    "prism": "prism",
-    "zepto": "zepto",
-    "raven": "raven",
-    "debug": "debug"
-  }
-})
+// seajs.config({
+//   base: "./js/vendor/",
+//   alias: {
+//     "underscore": "underscore",
+//     "fastclick": "fastclick",
+//     "prism": "prism",
+//     "zepto": "zepto",
+//     "raven": "raven",
+//     "debug": "debug"
+//   }
+// })
 
 // 加载入口模块
 // seajs.use("debug");

@@ -16,6 +16,7 @@
     }
 
     Router.prototype.start = function() {
+      console.log('route start')
       page.start();
     };
 

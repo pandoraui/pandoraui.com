@@ -67,6 +67,7 @@
     };
 
     DocList.prototype.render = function() {
+      console.log('sidebarDoc render');
       this.html(this.tmpl('sidebarDoc', app.docs.all()));
       if (!(app.isSingleDoc() || app.disabledDocs.size() === 0)) {
         this.renderDisabled();

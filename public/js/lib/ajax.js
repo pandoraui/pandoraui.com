@@ -115,6 +115,7 @@
   };
 
   onSuccess = function(response, xhr, options) {
+    console.log('ajaxSuccess')
     var _ref;
     if ((_ref = options.success) != null) {
       _ref.call(options.context, response, xhr, options);
@@ -122,6 +123,7 @@
   };
 
   onError = function(type, xhr, options) {
+    console.warn('ajaxError')
     var _ref;
     if ((_ref = options.error) != null) {
       _ref.call(options.context, type, xhr, options);

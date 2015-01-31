@@ -6,9 +6,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["xhtml"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "CSS",
@@ -18,9 +19,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": [],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "JavaScript",
@@ -30,9 +32,23 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["js"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
+  "last_modified": "1422356048"
+}, {
+  "name": "编程",
+  "slug": "program",
+  "icon": "program",
+  "type": "",
+  "rank": 1,
+  "quality": 1,
+  "alias": ["program"],
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
+  "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "算法",
@@ -42,9 +58,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["Algorithm"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "类库",
@@ -54,9 +71,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["lib"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "框架",
@@ -66,21 +84,23 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["framework"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
-  "name": "教程",
-  "slug": "tutorial",
-  "icon": "tutorial",
+  "name": "开发工具",
+  "slug": "devtool",
+  "icon": "devtool",
   "type": "",
   "rank": 1,
   "quality": 1,
-  "alias": ["tutorial"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "alias": ["devtool"],
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "书籍",
@@ -90,21 +110,23 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["ebook"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
-  "name": "开发工具",
-  "slug": "devtools",
-  "icon": "devtools",
+  "name": "教程",
+  "slug": "tutorial",
+  "icon": "tutorial",
   "type": "",
   "rank": 1,
   "quality": 1,
-  "alias": ["devtools"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "alias": ["tutorial"],
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "web 设计",
@@ -114,9 +136,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": ["design","视觉设计"],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "造好的轮子",
@@ -126,9 +149,10 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": [],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }, {
   "name": "淘金",
@@ -138,8 +162,9 @@ app.DOCS = [{
   "rank": 1,
   "quality": 1,
   "alias": [],
-  "category_path":"category.json",
-  "db_path":"db.json",
+  "index_path":"data/category.json",
+  "db_path":"data/db.json",
   "add_date": "1422356048",
+  "mtime": "1422356048",
   "last_modified": "1422356048"
 }];

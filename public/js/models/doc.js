@@ -54,7 +54,9 @@
     };
 
     Doc.prototype.indexUrl = function() {
-      return "" + (app.indexHost()) + "/" + this.index_path + "?" + this.mtime;
+      var url = "" + (app.indexHost()) + "/" + this.index_path + "?" + this.mtime;
+      console.log('ajaxUrl:'+url);
+      return url;
     };
 
     Doc.prototype.toEntry = function() {
@@ -77,6 +79,7 @@
     };
 
     Doc.prototype.load = function(onSuccess, onError, options) {
+      console.log('Doc load')
       var callback;
       if (options == null) {
         options = {};

@@ -97,6 +97,7 @@
       delete this.DOCS;
     },
     start: function() {
+      console.log('start');
       var doc, type, _i, _j, _len, _len1, _ref, _ref1;
       _ref = this.docs.all();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -176,9 +177,11 @@
       document.body.classList.remove('_loading');
     },
     indexHost: function() {
+      console.log('host');
       return this.config[this.appCache && this.settings.hasDocs() ? 'index_path' : 'docs_host'];
     },
     onBootError: function() {
+      console.log('onBootError');
       var args;
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       this.trigger('bootError');

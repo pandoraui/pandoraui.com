@@ -4,6 +4,7 @@
     function Model(attributes) {
       var key, value;
       for (key in attributes) {
+        //console.log(key);
         value = attributes[key];
         this[key] = value;
       }
