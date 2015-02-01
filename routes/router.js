@@ -19,8 +19,14 @@ module.exports = function(app) {
   app.get('/', function (req, res) {
     res.render('index',{list: jsonData.list});
   });
-  app.get('*', function (req, res) {
-    res.render('index',{list: jsonData.list});
+  app.get('/data/*.json', function (req, res) {
+    fs.readFile('./data/category.json', 'utf-8', function(err, data) {
+      if(err) {
+          console.error(err);
+      } else {
+          res.end(data);// = JSON.parse(data);
+      }
+  });
   });
   
 };

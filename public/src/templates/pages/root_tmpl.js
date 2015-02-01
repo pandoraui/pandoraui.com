@@ -1,0 +1,29 @@
+(function() {
+
+var maxcdnLink, shopifyLink;
+
+maxcdnLink = function(className) {
+  return "<a href=\"http://devdocs.io/s/maxcdn\" class=\"" + className + "\">\n  <span class=\"_logo-thx _maxcdn-logo\">MaxCDN</span>\n  <span class=\"_logo-info\">MaxCDN has been supporting DevDocs since day one. They provide CDN solutions that make DevDocs and countless other sites faster.</span>\n</a>";
+};
+
+shopifyLink = function(className) {
+  return "<a href=\"http://devdocs.io/s/shopify\" class=\"" + className + "\">\n  <span class=\"_logo-thx _shopify-logo\">Shopify</span>\n  <span class=\"_logo-info\">Interested in working on one of the biggest commerce platforms in the world, in a delightful work environment? We're hiring developers, ops engineers, designers&hellip;</span>\n</a>";
+};
+
+app.templates.splash = "<div class=\"_splash-title\">DevDocs</div>\n" + (maxcdnLink('_splash-sponsor')) + "\n" + (shopifyLink('_splash-sponsor'));
+
+if(App.development){
+
+app.templates.intro = "<div class=\"_intro\"><div class=\"_intro-message\">\n  <a class=\"_intro-hide\" data-hide-intro>Stop showing this message</a>\n  <h2 class=\"_intro-title\">Hi there!</h2>\n  <p>Thanks for downloading DevDocs. Here are a few things you should know:\n  <ol class=\"_intro-list\">\n    <li>Your local version of DevDocs won't self-update. Unless you're modifying the code,\n        I&nbsp;recommend using the hosted version at <a href=\"http://devdocs.io\">devdocs.io</a>.\n    <li>Run <code>thor docs:list</code> to see all available documentations.\n    <li>Run <code>thor docs:download --all</code> to download/update all documentations.\n      <li>To be notified about new versions, don't forget to <a href=\"https://github.com/Thibaut/devdocs/subscription\">watch the repository</a> on GitHub.\n    <li>The <a href=\"https://github.com/Thibaut/devdocs/issues\">issue tracker</a> is the preferred channel for bug reports and\n        feature requests. For everything else, use the <a href=\"https://groups.google.com/d/forum/devdocs\">mailing list</a>.\n    <li>Contributions are welcome. See the <a href=\"https://github.com/Thibaut/devdocs/blob/master/CONTRIBUTING.md\">guidelines</a>.\n    <li>DevDocs is licensed under the terms of the Mozilla Public License v2.0. For more information,\n        see the <a href=\"https://github.com/Thibaut/devdocs/blob/master/COPYRIGHT\">COPYRIGHT</a> and\n        <a href=\"https://github.com/Thibaut/devdocs/blob/master/LICENSE\">LICENSE</a> files.\n    <li>If you like the app, please consider supporting the project on <a href=\"https://gratipay.com/Thibaut/\">Gratipay</a>. Thanks!\n  </ol>\n  <p class=\"_intro-sponsors\">\n    Thanks to" + (shopifyLink('_intro-sponsor')) + " " + (maxcdnLink('_intro-sponsor')) + "\n  <p>That's all. Happy coding!\n</div></div>";
+
+}else{
+
+app.templates.intro = "<div class=\"_intro\"><div class=\"_intro-message\">\n  <a class=\"_intro-hide\" data-hide-intro>Stop showing this message</a>\n  <h2 class=\"_intro-title\">Welcome!</h2>\n  <p>DevDocs combines multiple API documentations in a fast, organized, and searchable interface.\n     Here's what you should know before you start:\n  <ol class=\"_intro-list\">\n    <li>To enable more docs, click <a class=\"_intro-link\" data-pick-docs>Select documentation</a> in the bottom left corner\n    <li>You don't have to use your mouse &mdash; see the list of <a href=\"/help#shortcuts\">keyboard shortcuts</a>\n    <li>The search supports fuzzy matching (e.g. \"bgcp\" brings up \"background-clip\")\n    <li>To search a specific documentation, type its name (or an abbreviation), then Tab\n    <li>You can search using your browser's address bar &mdash; <a href=\"/help#browser_search\">learn how</a>\n    <li>DevDocs works <a href=\"/offline\">offline</a>, on mobile, and can be installed on <a href=\"https://chrome.google.com/webstore/detail/devdocs/mnfehgbmkapmjnhcnbodoamcioleeooe\">Chrome</a> and <a href=\"https://marketplace.firefox.com/app/devdocs/\">Firefox</a>.\n    <li>For the latest news, subscribe to the <a href=\"http://eepurl.com/HnLUz\">newsletter</a> or follow <a href=\"https://twitter.com/DevDocs\">@DevDocs</a>\n    <li>DevDocs is free and <a href=\"https://github.com/Thibaut/devdocs\">open source</a>\n        <li>If you like the app, please consider supporting the project on <a href=\"https://gratipay.com/Thibaut/\">Gratipay</a>. Thanks!\n  </ol>\n  <p class=\"_intro-sponsors\">\n    Thanks to" + (shopifyLink('_intro-sponsor')) + " " + (maxcdnLink('_intro-sponsor')) + "\n  <p>That's all. Happy coding!\n</div></div>";
+
+}
+
+app.templates.mobileNav = "<nav class=\"_mobile-nav\">\n  <a href=\"/offline\" class=\"_mobile-nav-link\">Offline</a>\n  <a href=\"/about\" class=\"_mobile-nav-link\">About</a>\n  <a href=\"/news\" class=\"_mobile-nav-link\">News</a>\n  <a href=\"/help\" class=\"_mobile-nav-link\">Help</a>\n</nav>";
+
+app.templates.mobileIntro = "<div class=\"_mobile-intro\">\n  <h2 class=\"_intro-title\">Welcome!</h2>\n  <p>DevDocs combines multiple API documentations in a fast, organized, and searchable interface.\n     Here's what you should know before you start:\n  <ol class=\"_intro-list\">\n    <li>To pick your docs, click <a data-pick-docs>Select documentation</a> at the bottom of the menu\n    <li>The search supports fuzzy matching (e.g. \"bgcp\" matches \"background-clip\")\n    <li>To search a specific documentation, type its name (or an abbreviation), then Space\n    <li>For the latest news, subscribe to the <a href=\"http://eepurl.com/HnLUz\">newsletter</a> or follow <a href=\"https://twitter.com/DevDocs\">@DevDocs</a>\n    <li>DevDocs is <a href=\"https://github.com/Thibaut/devdocs\">open source</a>\n  </ol>\n  <p>That's all. Happy coding!\n  <p class=\"_intro-sponsors\">" + (shopifyLink('_intro-sponsor')) + " " + (maxcdnLink('_intro-sponsor')) + "</p>\n  <a class=\"_intro-hide\" data-hide-intro>Stop showing this message</a>\n</div>";
+
+}).call(this);

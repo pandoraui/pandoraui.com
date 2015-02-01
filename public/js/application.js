@@ -11,7 +11,7 @@
     //console.log('js ready');
     document.removeEventListener('DOMContentLoaded', init, false);
     if (document.body) {
-      //console.log('body loaded');
+      console.log('body loaded');
       return app.init();
     } else {
       return setTimeout(init, 42);
