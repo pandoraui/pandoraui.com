@@ -16,6 +16,21 @@ fs.readFile(db_path, 'utf-8', function(err, data) {
 
 /* GET home page. */
 module.exports = function(app) {
+  // switch(req.mothod){
+  //   case 'POST':
+  //     update(req,res);
+  //     break;
+  //   case 'DELETE':
+  //     remove(req,res);
+  //     break;
+  //   case 'PUT':
+  //     create(req,res);
+  //     break;
+  //   case 'GET':
+  //   default:
+  //     get(req,res);
+
+  // }
   app.get('/', function (req, res) {
     res.render('index',{list: jsonData.list});
   });
@@ -26,7 +41,9 @@ module.exports = function(app) {
       } else {
           res.end(data);// = JSON.parse(data);
       }
+    });
   });
-  });
+
+  
   
 };
