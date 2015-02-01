@@ -3,31 +3,34 @@
 // 结构配置文件
 //
 
-define([],function(){
+define(function(require, exports, module) {
     var script = [
       'app_config',
-      {'lib' : ['ajax', 'events', 'page', 'store', 'util', 'license']},
-      {'app' : ['app', 'config', 'router', 'settings']},
-      'docs',
-      'news',
-      {'app' : ['db', 'appcache', 'searcher', 'shortcuts']},
-      {'models' : ['model', 'doc', 'entry', 'type']},
-      {'views' : ['view', {
-          'layout': ['document', 'mobile', 'nav', 'path'],
-          'content': ['content', 'root_page', 'entry_page', 'static_page', 'offline_page', 'entry_page', 'type_page'],
-          'sidebar': ['sidebar', 'sidebar_hover', 'results', 'doc_list', 'doc_picker', 'entry_list', 'type_list'],
-          'pages': ['base'],
-          'list': ['list_fold', 'list_select', 'list_focus', 'paginated_list'],
-          'search': ['search', 'search_scope'],
-          'misc': ['news', 'notice', 'notif']
-        }]},
-      {'collections' : ['collection', 'docs', 'entries', 'types']},
-      {'templates' : ['base', 'error_tmpl', 'notice_tmpl', 'notif_tmpl', 'path_tmpl', 'sidebar_tmpl', 
-          {'pages': ['about_tmpl', 'help_tmpl', 'new_tmpl', 'offline_tmpl', 'root_tmpl', 'type_tmpl']}
-        ]
-      },
+      {'lib' : ['util', 'events', 'store', 'license']},
+      //{'lib' : ['ajax', 'events', 'page', 'util', 'license']},
+      {'app' : ['app']},
+      //{'app' : ['router']},
+      {'app' : ['config', 'settings']},
+      // 'docs',
+      // 'news',
+      // {'app' : ['db', 'appcache', 'searcher', 'shortcuts']},
+      // {'models' : ['model', 'doc', 'entry', 'type']},
+      // {'views' : ['view', {
+      //     'layout': ['document', 'mobile', 'nav', 'path'],
+      //     'content': ['content', 'root_page', 'entry_page', 'static_page', 'offline_page', 'entry_page', 'type_page'],
+      //     'sidebar': ['sidebar', 'sidebar_hover', 'results', 'doc_list', 'doc_picker', 'entry_list', 'type_list'],
+      //     'pages': ['base'],
+      //     'list': ['list_fold', 'list_select', 'list_focus', 'paginated_list'],
+      //     'search': ['search', 'search_scope'],
+      //     'misc': ['news', 'notice', 'notif']
+      //   }]},
+      // {'collections' : ['collection', 'docs', 'entries', 'types']},
+      // {'templates' : ['base', 'error_tmpl', 'notice_tmpl', 'notif_tmpl', 'path_tmpl', 'sidebar_tmpl', 
+      //     {'pages': ['about_tmpl', 'help_tmpl', 'new_tmpl', 'offline_tmpl', 'root_tmpl', 'type_tmpl']}
+      //   ]
+      // },
       //{'vendor': ['zepto', 'underscore']},
-      'debug',
+      //'debug',
       'application',
     ];
 
@@ -75,7 +78,7 @@ define([],function(){
     params: params
   }
 
-  return app_config;
+  module.exports = app_config;
 })
 
 

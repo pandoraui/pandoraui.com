@@ -65,34 +65,39 @@ devguide
 
 ```js
 src/js
-|- /app           //项目文件
-|   |- app.js           //主程序
-|   |- config.js        //配置
-|   |- router.js        //路由
-|   |- settings.js      //默认设置
-|   |- db.js            //*数据
-|   |- appcache.js      //*缓存
-|   |- searcher.js      //*搜索
-|   |- shortcuts.js     //*快捷键
+|-  data          //数据
+|     App.js
+|     docs.js           //首页数据
+|     news.json         //更新提醒数据
 |
 |- /lib           //库文件
 |   |- events.js        //事件基类
 |   |- page.js          //微客户端路由器
 |   |- util.js          //工具包
-|   |- *ajax.js         //*ajax请求处理
-|   |- *store.js        //*缓存处理
+|   |- ajax.js          //ajax请求处理
+|   |- store.js         //缓存处理
+|
+|- /app           //项目文件
+|   |- app.js           //主程序
+|   |- config.js        //配置
+|   |- router.js        //路由
+|   |- settings.js      //默认设置
+|   |- db.js            //数据
+|   |- appcache.js      //缓存
+|   |- searcher.js      //搜索
+|   |- shortcuts.js     //快捷键
 |
 |- /models        //模型
+|   |- model.js         //
 |   |- doc.js           //
 |   |- entry.js         //
-|   |- model.js         //
 |   |- type.js          //
 |
 |- /collections   //集合
 |   |- collection.js    //
 |   |- docs.js          //
-|   |- *entries.js      //
-|   |- *types.js        //
+|   |- entries.js       //
+|   |- types.js         //
 |
 |- /views         //视图
 |   |- view.js          //
@@ -127,10 +132,6 @@ src/js
 |   |- cookies.js
 |   |- prism.js
 |   |- raven.js
-|
-|- /data          //数据
-|   |- docs.js          //首页数据
-|   |- news.json        //更新提醒数据
 |
 |- application.js     //应用入口
 |- debug.js           //调试及检测

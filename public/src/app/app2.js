@@ -1,9 +1,22 @@
-define(['application'],function(App,settings) {
+define(['application','settings','util','events'],function(App,settings) {
 
-  var app = {
+  app = $.extend(app,{
+    $: $,
+    $$: $$,
+    collections: {},
+    models: {},
+    templates: {},
+    views: {},
     init: function(){
       console.log('app init');
       this.showLoading();
+      console.log('data');
+
+      //this.setting = config;
+      // this.store = new Store;
+      // this.Settings = new settings;
+
+      this.hideLoading();
     },
     showLoading: function() {
       document.body.classList.remove('_noscript');
@@ -16,7 +29,6 @@ define(['application'],function(App,settings) {
 
     
     
-  }
-  window.app = app;
+  })
   return app
 })

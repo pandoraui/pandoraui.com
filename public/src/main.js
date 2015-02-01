@@ -3,6 +3,8 @@
 // 入口文件
 //
 
+// define(function(require, exports, module) {
+//   var app_config = require('app_config');
 define(['app_config'],function(app_config) {
 
   var config = {
@@ -10,11 +12,17 @@ define(['app_config'],function(app_config) {
   };
 
   require.config(config);
+  //seajs.config(config);
   
   var modules = app_config.modules;
   var params = app_config.params;
-  require(modules, function(params) {
-    console.log('main: load modules')
+  
+  console.log(params)
+  window.app = app = {}
+
+  require(['app'], function(app) {
+    console.log('ready')
+    app.init();
   });
 
 })

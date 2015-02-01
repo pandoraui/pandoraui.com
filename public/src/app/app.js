@@ -1,4 +1,3 @@
-//define([],function(){
 (function() {
   var supportsCssGradients,
     __slice = [].slice;
@@ -21,30 +20,30 @@
       //   return;
       // }
       this.showLoading();
-      //this.store = new Store;
+      this.store = new Store;
       // if (app.AppCache.isEnabled()) {
       //   this.appCache = new app.AppCache;
       // }
-//       this.settings = new app.Settings(this.store);
-//       this.docs = new app.collections.Docs;
-//       this.disabledDocs = new app.collections.Docs;
-//       this.entries = new app.collections.Entries;
-//       this.router = new app.Router;
-//       this.shortcuts = new app.Shortcuts;
-//       this.document = new app.views.Document;
+      // this.settings = new app.Settings(this.store);
+      // this.docs = new app.collections.Docs;
+      // this.disabledDocs = new app.collections.Docs;
+      // this.entries = new app.collections.Entries;
+      // this.router = new app.Router;
+      // this.shortcuts = new app.Shortcuts;
+      // this.document = new app.views.Document;
       // if (this.isMobile()) {
       //   this.mobile = new app.views.Mobile;
       // }
       // if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
       //   document.documentElement.style.height = "" + window.innerHeight + "px";
       // }
-//       if (this.DOC) {
-//         this.bootOne();
-//       } else if (this.DOCS) {
-//         this.bootAll();
-//       } else {
-//         this.onBootError();
-//       }
+      if (this.DOC) {
+        this.bootOne();
+      } else if (this.DOCS) {
+        //this.bootAll();
+      } else {
+        this.onBootError();
+      }
     },
     // browserCheck: function() {
     //   if (this.isSupportedBrowser()) {
@@ -270,7 +269,6 @@
     return el.style.backgroundImage.indexOf('gradient') >= 0;
   };
 
-  $.extend(app, Events);
+  //$.extend(app, Events);
 
 }).call(this);
-//})
