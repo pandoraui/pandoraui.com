@@ -77,7 +77,7 @@ src/js
 |
 |- /lib           //库文件
 |   |- events.js        //事件基类
-|   |- page.js          //微客户端路由
+|   |- page.js          //微客户端路由器
 |   |- util.js          //工具包
 |   |- *ajax.js         //*ajax请求处理
 |   |- *store.js        //*缓存处理
