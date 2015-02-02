@@ -269,6 +269,6 @@
     return el.style.backgroundImage.indexOf('gradient') >= 0;
   };
 
-  //$.extend(app, Events);
+  $.extend(app, Events);
 
 }).call(this);
