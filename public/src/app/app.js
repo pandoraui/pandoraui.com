@@ -24,13 +24,13 @@
       // if (app.AppCache.isEnabled()) {
       //   this.appCache = new app.AppCache;
       // }
-      // this.settings = new app.Settings(this.store);
-      // this.docs = new app.collections.Docs;
-      // this.disabledDocs = new app.collections.Docs;
-      // this.entries = new app.collections.Entries;
-      // this.router = new app.Router;
-      // this.shortcuts = new app.Shortcuts;
-      // this.document = new app.views.Document;
+      this.settings = new app.Settings(this.store);
+      this.docs = new app.collections.Docs;
+      this.disabledDocs = new app.collections.Docs;
+      this.entries = new app.collections.Entries;
+      this.router = new app.Router;
+      this.shortcuts = new app.Shortcuts;
+      this.document = new app.views.Document;
       // if (this.isMobile()) {
       //   this.mobile = new app.views.Mobile;
       // }
@@ -40,7 +40,7 @@
       if (this.DOC) {
         this.bootOne();
       } else if (this.DOCS) {
-        //this.bootAll();
+        this.bootAll();
       } else {
         this.onBootError();
       }
