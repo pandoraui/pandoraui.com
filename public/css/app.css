@@ -19,6 +19,9 @@
     background-image: url("../images/icons@2x.png");
   }
 }
+
+[class*="_icon"]:before { background-position: -2rem -1rem;}
+
 ._list-arrow:before {
   background-position: 0 0;
 }
