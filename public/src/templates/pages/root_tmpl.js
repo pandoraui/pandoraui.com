@@ -10,7 +10,7 @@ shopifyLink = function(className) {
   return "<a href=\"http://devdocs.io/s/shopify\" class=\"" + className + "\">\n  <span class=\"_logo-thx _shopify-logo\">Shopify</span>\n  <span class=\"_logo-info\">Interested in working on one of the biggest commerce platforms in the world, in a delightful work environment? We're hiring developers, ops engineers, designers&hellip;</span>\n</a>";
 };
 
-app.templates.splash = "<div class=\"_splash-title\">DevDocs</div>\n" + (maxcdnLink('_splash-sponsor')) + "\n" + (shopifyLink('_splash-sponsor'));
+app.templates.splash = "<div class=\"_splash-title\">Developer</div>\n" + (maxcdnLink('_splash-sponsor')) + "\n" + (shopifyLink('_splash-sponsor'));
 
 if(App.development){
 

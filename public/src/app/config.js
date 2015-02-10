@@ -1,6 +1,7 @@
 app.config = {
     default_docs: ['html', 'css', 'javascript', 'algorithm', 'program', 'books', 'tutorial', 'wheel', 'panning'],
     //default_docs: ['html', 'css', 'javascript', 'algorithm', 'program', 'framework', 'lib', 'books', 'tutorial', 'wheel', 'panning'],
+    site_title: 'Developer',
     docs_host: App.docs_host, //'localhost:3000', 
     env: App.environment,
     history_cache_size: 15,
