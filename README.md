@@ -17,6 +17,18 @@ Pandora 前端框架（以下简称 Pandora）是基于 [cnBootstrap](https://gi
 
 其中 cnBootstrap 集成了(sofish)旧版AliceUI 兼容解决方案（包括但不限于AliceUI），通过整合各类兼容性解决方案，cnBootstrap已经具备大量的解决方案实例。现转移到pandora中进一步完善...
 
+##栏目
+
+Recent
+Tags
+Popular
+Users
+Groups
+Search
+
+Register
+Login
+
 ## 开发规划
 
 #### 仓库目录结构：
