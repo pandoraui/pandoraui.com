@@ -110,45 +110,45 @@
         }
         this.entries.add(doc.entries.all());
       }
-      //this.db = new app.DB();
+      this.db = new app.DB();
       this.trigger('ready');
       this.router.start();
       this.hideLoading();
-      // if (!this.doc) {
-      //   this.welcomeBack();
-      // }
-      // this.removeEvent('ready bootError');
+      if (!this.doc) {
+        this.welcomeBack();
+      }
+      this.removeEvent('ready bootError');
     },
-    // welcomeBack: function() {
-    //   var visitCount;
-    //   visitCount = this.settings.get('count');
-    //   this.settings.set('count', ++visitCount);
-    //   if (visitCount === 5) {
-    //     new app.views.Notif('Share', {
-    //       autoHide: null
-    //     });
-    //   }
-    //   if (visitCount === 10) {
-    //     new app.views.Notif('Thanks', {
-    //       autoHide: null
-    //     });
-    //   }
-    //   new app.views.News();
-    //   return this.checkForDocUpdates();
-    // },
-    // checkForDocUpdates: function() {
-    //   if (this.settings.get('autoUpdate')) {
-    //     return this.docs.updateInBackground();
-    //   } else {
-    //     return this.docs.checkForUpdates(function(i) {
-    //       if (i > 0) {
-    //         return new app.views.Notif('UpdateDocs', {
-    //           autoHide: null
-    //         });
-    //       }
-    //     });
-    //   }
-    // },
+    welcomeBack: function() {
+      var visitCount;
+      visitCount = this.settings.get('count');
+      this.settings.set('count', ++visitCount);
+      if (visitCount === 5) {
+        new app.views.Notif('Share', {
+          autoHide: null
+        });
+      }
+      if (visitCount === 10) {
+        new app.views.Notif('Thanks', {
+          autoHide: null
+        });
+      }
+      new app.views.News();
+      return this.checkForDocUpdates();
+    },
+    checkForDocUpdates: function() {
+      if (this.settings.get('autoUpdate')) {
+        return this.docs.updateInBackground();
+      } else {
+        return this.docs.checkForUpdates(function(i) {
+          if (i > 0) {
+            return new app.views.Notif('UpdateDocs', {
+              autoHide: null
+            });
+          }
+        });
+      }
+    },
     reload: function() {
       this.docs.clearCache();
       this.disabledDocs.clearCache();
@@ -214,39 +214,39 @@
     isAppError: function(error, file) {
       return file && file.indexOf('devdocs') !== -1 && file.indexOf('.js') === file.length - 3;
     },
-    // isSupportedBrowser: function() {
-    //   var error, features, key, value;
-    //   try {
-    //     features = {
-    //       bind: !!Function.prototype.bind,
-    //       pushState: !!history.pushState,
-    //       matchMedia: !!window.matchMedia,
-    //       classList: !!document.body.classList,
-    //       insertAdjacentHTML: !!document.body.insertAdjacentHTML,
-    //       defaultPrevented: document.createEvent('CustomEvent').defaultPrevented === false,
-    //       cssGradients: supportsCssGradients()
-    //     };
-    //     for (key in features) {
-    //       value = features[key];
-    //       if (!(!value)) {
-    //         continue;
-    //       }
-    //       //TODO: Raven? https://github.com/getsentry/raven-js
-    //       //Raven.captureMessage("unsupported/" + key);
-    //       return false;
-    //     }
-    //     return true;
-    //   } catch (_error) {
-    //     error = _error;
-    //     //TODO: Raven?
-    //     // Raven.captureMessage('unsupported/exception', {
-    //     //   extra: {
-    //     //     error: error
-    //     //   }
-    //     // });
-    //     return false;
-    //   }
-    // },
+    isSupportedBrowser: function() {
+      var error, features, key, value;
+      try {
+        features = {
+          bind: !!Function.prototype.bind,
+          pushState: !!history.pushState,
+          matchMedia: !!window.matchMedia,
+          classList: !!document.body.classList,
+          insertAdjacentHTML: !!document.body.insertAdjacentHTML,
+          defaultPrevented: document.createEvent('CustomEvent').defaultPrevented === false,
+          cssGradients: supportsCssGradients()
+        };
+        for (key in features) {
+          value = features[key];
+          if (!(!value)) {
+            continue;
+          }
+          //TODO: Raven? https://github.com/getsentry/raven-js
+          //Raven.captureMessage("unsupported/" + key);
+          return false;
+        }
+        return true;
+      } catch (_error) {
+        error = _error;
+        //TODO: Raven?
+        // Raven.captureMessage('unsupported/exception', {
+        //   extra: {
+        //     error: error
+        //   }
+        // });
+        return false;
+      }
+    },
     isSingleDoc: function() {
       return !!(this.DOC || this.doc);
     },

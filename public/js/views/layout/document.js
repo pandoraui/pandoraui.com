@@ -30,7 +30,7 @@
     };
 
     Document.prototype.setTitle = function(title) {
-      return this.el.title = title ? "DevDocs/" + title : 'DevDocs';
+      return this.el.title = title ? app.config.site_title + "/" + title : app.config.site_title;
     };
 
     Document.prototype.onHelp = function() {

@@ -5,6 +5,57 @@
 
   app.views.News = (function(_super) {
     __extends(News, _super);
+    
+    console.log('new News')
+    // var News = _super.extend({
+    //   className: this.className + ' _notif-news',
+    //   defautOptions: {
+    //     autoHide: null
+    //   },
+
+    //   init: function() {
+    //     this.unreadNews = this.getUnreadNews();
+    //     if (this.unreadNews.length) {
+    //       this.show();
+    //     }
+    //     this.markAllAsRead();
+    //   },
+
+    //   render: function() {
+    //     this.html(app.templates.notifNews(this.unreadNews));
+    //   },
+
+    //   getUnreadNews: function() {
+    //     var news, time, _i, _len, _ref, _results;
+    //     if (!(time = this.getLastReadTime())) {
+    //       return [];
+    //     }
+    //     _ref = app.news;
+    //     _results = [];
+    //     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    //       news = _ref[_i];
+    //       if (new Date(news[0]).getTime() <= time) {
+    //         break;
+    //       }
+    //       _results.push(news);
+    //     }
+    //     return _results;
+    //   },
+
+    //   getLastNewsTime: function() {
+    //     return new Date(app.news[0][0]).getTime();
+    //   },
+
+    //   getLastReadTime: function() {
+    //     return app.settings.get('news');
+    //   },
+
+    //   markAllAsRead: function() {
+    //     app.settings.set('news', this.getLastNewsTime());
+    //   }
+    // })
+
+    // return News//._super.constructor.apply(this, arguments);
 
     function News() {
       return News.__super__.constructor.apply(this, arguments);
