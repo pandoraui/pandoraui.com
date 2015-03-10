@@ -11,7 +11,7 @@
   width: 1rem;
   height: 1rem;
   background-image: url("../images/icons.png");
-  background-size: 5rem 13rem;
+  background-size: 10rem 8rem;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
@@ -40,247 +40,266 @@
 }
 
 ._sidebar-footer-edit:before {
-  background-position: 0 -1rem;
+  background-position: -5rem 0;
 }
 
 ._sidebar-footer-save:before {
-  background-position: -1rem -1rem;
+  background-position: -6rem 0;
 }
 
 ._icon-http:before {
-  background-position: -2rem -1rem;
+  background-position: -7rem 0;
 }
 
 ._icon-jquery:before {
-  background-position: -3rem -1rem;
+  background-position: -8rem 0;
 }
 
 ._icon-underscore:before {
-  background-position: -4rem -1rem;
+  background-position: -9rem 0;
 }
 
 ._icon-html:before {
-  background-position: 0 -2rem;
+  background-position: 0 -1rem;
 }
 
 ._icon-css:before {
-  background-position: -1rem -2rem;
+  background-position: -1rem -1rem;
 }
 
 ._icon-dom:before {
-  background-position: -2rem -2rem;
+  background-position: -2rem -1rem;
 }
 
 ._icon-dom_events:before {
-  background-position: -3rem -2rem;
+  background-position: -3rem -1rem;
 }
 
 ._icon-javascript:before {
-  background-position: -4rem -2rem;
+  background-position: -4rem -1rem;
 }
 
 ._icon-backbone:before {
-  background-position: 0 -3rem;
+  background-position: -5rem -1rem;
 }
 
 ._icon-node:before {
-  background-position: -1rem -3rem;
+  background-position: -6rem -1rem;
 }
 
 ._icon-sass:before {
-  background-position: -2rem -3rem;
+  background-position: -7rem -1rem;
 }
 
 ._icon-less:before {
-  background-position: -3rem -3rem;
+  background-position: -8rem -1rem;
 }
 
 ._icon-angular:before {
-  background-position: -4rem -3rem;
+  background-position: -9rem -1rem;
 }
 
 ._icon-coffeescript:before {
-  background-position: 0 -4rem;
+  background-position: 0 -2rem;
 }
 
 ._icon-ember:before {
-  background-position: -1rem -4rem;
+  background-position: -1rem -2rem;
 }
 
 ._menu-link:before {
-  background-position: -2rem -4rem;
+  background-position: -2rem -2rem;
 }
 
 ._home-link:before {
-  background-position: -3rem -4rem;
+  background-position: -3rem -2rem;
 }
 
 ._icon-jqueryui:before {
-  background-position: -4rem -4rem;
+  background-position: -4rem -2rem;
 }
 
 ._icon-jquerymobile:before {
-  background-position: 0 -5rem;
+  background-position: -5rem -2rem;
 }
 
 ._icon-lodash:before {
-  background-position: -1rem -5rem;
+  background-position: -6rem -2rem;
 }
 
 ._icon-php:before {
-  background-position: -2rem -5rem;
+  background-position: -7rem -2rem;
 }
 
-._icon-ruby:before {
-  background-position: -3rem -5rem;
+._icon-ruby:before,
+._icon-minitest:before {
+  background-position: -8rem -2rem;
 }
 
 ._icon-rails:before {
-  background-position: -4rem -5rem;
+  background-position: -9rem -2rem;
 }
 
-._icon-python:before {
-  background-position: 0 -6rem;
-}
-
+._icon-python:before,
 ._icon-python2:before {
-  background-position: 0 -6rem;
+  background-position: 0 -3rem;
 }
 
 ._icon-git:before {
-  background-position: -1rem -6rem;
+  background-position: -1rem -3rem;
 }
 
 ._icon-redis:before {
-  background-position: -2rem -6rem;
+  background-position: -2rem -3rem;
 }
 
 ._icon-postgresql:before {
-  background-position: -3rem -6rem;
+  background-position: -3rem -3rem;
 }
 
 ._icon-d3:before {
-  background-position: -4rem -6rem;
+  background-position: -4rem -3rem;
 }
 
 ._icon-knockout:before {
-  background-position: 0 -7rem;
+  background-position: -5rem -3rem;
 }
 
 ._icon-moment:before {
-  background-position: -1rem -7rem;
+  background-position: -6rem -3rem;
 }
 
 ._icon-c:before {
-  background-position: -2rem -7rem;
+  background-position: -7rem -3rem;
 }
 
 ._path-item + ._path-item:after {
-  background-position: -3rem -7rem;
+  background-position: -8rem -3rem;
 }
 
-._icon-yii:before {
-  background-position: -4rem -7rem;
+._icon-yii:before,
+._icon-yii1:before {
+  background-position: -9rem -3rem;
 }
 
 ._icon-cpp:before {
-  background-position: 0 -8rem;
+  background-position: 0 -4rem;
 }
 
 ._icon-go:before {
-  background-position: -1rem -8rem;
+  background-position: -1rem -4rem;
 }
 
 ._icon-express:before {
-  background-position: -2rem -8rem;
+  background-position: -2rem -4rem;
 }
 
 ._icon-grunt:before {
-  background-position: -3rem -8rem;
+  background-position: -3rem -4rem;
 }
 
 ._icon-maxcdn:before {
-  background-position: -4rem -8rem;
+  background-position: -4rem -4rem;
 }
 
 ._icon-laravel:before {
-  background-position: 0 -9rem;
+  background-position: -5rem -4rem;
 }
 
 ._icon-haskell:before {
-  background-position: -1rem -9rem;
+  background-position: -6rem -4rem;
 }
 
 ._icon-requirejs:before {
-  background-position: -2rem -9rem;
+  background-position: -7rem -4rem;
 }
 
 ._icon-chai:before {
-  background-position: -3rem -9rem;
+  background-position: -8rem -4rem;
 }
 
 ._icon-sinon:before {
-  background-position: -4rem -9rem;
+  background-position: -9rem -4rem;
 }
 
 ._icon-cordova:before {
-  background-position: 0 -10rem;
+  background-position: 0 -5rem;
 }
 
 ._icon-markdown:before {
-  background-position: -1rem -10rem;
+  background-position: -1rem -5rem;
 }
 
 ._icon-django:before {
-  background-position: -2rem -10rem;
+  background-position: -2rem -5rem;
 }
 
 ._icon-xpath:before {
-  background-position: -3rem -10rem;
+  background-position: -3rem -5rem;
 }
 
 ._icon-nginx:before {
-  background-position: -4rem -10rem;
+  background-position: -4rem -5rem;
 }
 
 ._icon-svg:before {
-  background-position: 0 -11rem;
+  background-position: -5rem -5rem;
 }
 
 ._icon-marionette:before {
-  background-position: -1rem -11rem;
+  background-position: -6rem -5rem;
 }
 
 ._icon-mongoose:before {
-  background-position: -2rem -11rem;
+  background-position: -7rem -5rem;
 }
 
 ._icon-phpunit:before {
-  background-position: -3rem -11rem;
+  background-position: -8rem -5rem;
 }
 
 ._icon-nokogiri:before {
-  background-position: -4rem -11rem;
+  background-position: -9rem -5rem;
 }
 
 ._icon-rethinkdb:before {
-  background-position: 0 -12rem;
+  background-position: 0 -6rem;
 }
 
 ._icon-react:before {
-  background-position: -1rem -12rem;
+  background-position: -1rem -6rem;
 }
 
 ._icon-socketio:before {
-  background-position: -2rem -12rem;
+  background-position: -2rem -6rem;
 }
 
 ._icon-modernizr:before {
-  background-position: -3rem -12rem;
+  background-position: -3rem -6rem;
 }
 
 ._icon-bower:before {
-  background-position: -4rem -12rem;
+  background-position: -4rem -6rem;
+}
+
+._sidebar-footer-light:before {
+  background-position: 0 -7rem;
+}
+
+._icon-iojs:before {
+  background-position: -2rem -7rem;
+}
+
+._icon-lua:before {
+  background-position: -3rem -7rem;
+}
+
+._icon-clojure:before {
+  background-position: -4rem -7rem;
+}
+
+._icon-symfony:before {
+  background-position: -5rem -7rem;
 }
 
 input, ._app, ._search, ._notif, ._logo-info, ._list, ._list-hover.clone, ._sidebar-footer-link, ._container, ._content, ._fail {
@@ -907,6 +926,17 @@ input[type="search"]::-webkit-search-decoration {
   outline: 0;
 }
 
+._resizer {
+  position: absolute;
+  z-index: 3;
+  top: 3rem;
+  bottom: 0;
+  left: 18rem;
+  margin-left: -2px;
+  width: 3px;
+  cursor: col-resize;
+}
+
 ._list {
   margin: 0;
   padding: 0;
@@ -969,14 +999,32 @@ input[type="search"]::-webkit-search-decoration {
   margin: .25rem .625rem 0 0;
 }
 
-._list-count {
+._list-count, ._list-enable {
   float: right;
   font-size: .75rem;
+}
+.focus > ._list-count, .active > ._list-count, .focus > ._list-enable, .active > ._list-enable {
+  color: inherit;
+}
+
+._list-count {
   color: #999;
   pointer-events: none;
 }
-.focus > ._list-count, .active > ._list-count {
-  color: inherit;
+._list-disabled:hover > ._list-count {
+  display: none;
+}
+
+._list-enable {
+  display: none;
+  color: #0082c6;
+  cursor: pointer;
+}
+._list-enable:hover {
+  text-decoration: underline;
+}
+._list-disabled:hover > ._list-enable {
+  display: block;
 }
 
 ._list-dir,
@@ -1058,19 +1106,17 @@ input[type="search"]::-webkit-search-decoration {
   box-shadow: 0 -3px rgba(255, 255, 255, 0.9), 0 3px rgba(255, 255, 255, 0.9);
 }
 
-._list-noresults {
-  padding: .5rem .75rem;
+._list-note {
+  margin: .5rem .75rem;
   line-height: 1.25rem;
   font-size: .8125rem;
   color: #666;
 }
-
-._list-noresults-note {
-  display: block;
+._list-note + ._list-note {
   margin-top: .25rem;
 }
 
-._list-noresults-link {
+._list-note-link {
   cursor: pointer;
 }
 
@@ -1170,6 +1216,7 @@ input[type="search"]::-webkit-search-decoration {
 ._sidebar-footer-link {
   position: relative;
   display: block;
+  overflow: hidden;
   height: 2.5rem;
   line-height: 1rem;
   padding: .75rem;
@@ -1183,6 +1230,19 @@ input[type="search"]::-webkit-search-decoration {
 ._sidebar-footer-link:before {
   float: left;
   margin-right: .625rem;
+}
+
+._sidebar-footer-light {
+  float: right;
+  width: 2.5rem;
+  padding: 0;
+  opacity: .6;
+}
+._sidebar-footer-light:before {
+  float: none;
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
 }
 
 ._sidebar-footer-save {
@@ -1892,8 +1952,8 @@ input[type="search"]::-webkit-search-decoration {
   float: none;
   width: auto;
   overflow: hidden;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 2px;
+  padding-right: 2px;
   border-right: 0;
 }
 ._mobile ._search:before {
