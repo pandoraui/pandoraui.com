@@ -20,7 +20,7 @@ var sass = require('gulp-ruby-sass'),
     pngquant = require('imagemin-pngquant'),
     clean = require('gulp-clean'),          //进行部署之前，清除dest目录并重建档案
     cache = require('gulp-cache'),          //快取gulp-cache外挂，只有新的或更动的图片会被压缩
-    sprite = require('css-sprites-extend').stream,
+    //sprite = require('css-sprites-extend').stream,
     livereload = require('gulp-livereload');
 
 //雪碧图需要引用
@@ -72,6 +72,9 @@ gulp.task('clean', function() {
 //     .pipe(gulp.dest(out_path + 'sass/'));
 // });
 // generate sprite.png and _sprite.scss
+/*
+ sprite需要引用css-sprites，会依赖ruby等，不是轻量化的，待定使用
+
 gulp.task('sprite', function () {
   return gulp.src(src_path + 'sprite/*.png')
     .pipe(sprite({
@@ -97,6 +100,7 @@ gulp.task('sprite', function () {
     ))
     .pipe(notify({ message: 'Sprite task complete' }));
 });
+*/
 
 // generate scss with base64 encoded images
 gulp.task('base64', function () {
