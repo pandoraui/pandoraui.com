@@ -4,6 +4,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   app.collections.Types = (function(_super) {
+    var GUIDES_RGX;
+
     __extends(Types, _super);
 
     function Types() {
@@ -11,6 +13,29 @@
     }
 
     Types.model = 'Type';
+
+    Types.prototype.groups = function() {
+      var result, type, _i, _len, _name, _ref;
+      result = [];
+      _ref = this.models;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        type = _ref[_i];
+        (result[_name = this._groupFor(type)] || (result[_name] = [])).push(type);
+      }
+      return result.filter(function(e) {
+        return e.length > 0;
+      });
+    };
+
+    GUIDES_RGX = /guide|tutorial|getting\ started/i;
+
+    Types.prototype._groupFor = function(type) {
+      if (GUIDES_RGX.test(type.name)) {
+        return 0;
+      } else {
+        return 1;
+      }
+    };
 
     return Types;
 

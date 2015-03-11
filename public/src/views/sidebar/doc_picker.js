@@ -29,12 +29,14 @@
     };
 
     DocPicker.prototype.activate = function() {
-      var _ref;
+      var _ref, _ref1;
       if (DocPicker.__super__.activate.apply(this, arguments)) {
         this.render();
-        this.findByTag('input').focus();
-        if ((_ref = app.appCache) != null) {
-          _ref.on('progress', this.onAppCacheProgress);
+        if ((_ref = this.findByTag('input')) != null) {
+          _ref.focus();
+        }
+        if ((_ref1 = app.appCache) != null) {
+          _ref1.on('progress', this.onAppCacheProgress);
         }
         $.on(this.el, 'focus', this.onFocus, true);
       }
@@ -54,7 +56,7 @@
     DocPicker.prototype.render = function() {
       this.html(this.tmpl('sidebarLabel', app.docs.all(), {
         checked: true
-      }) + this.tmpl('sidebarLabel', app.disabledDocs.all()) + this.tmpl('sidebarVote') + this.tmpl('sidebarSave'));
+      }) + this.tmpl('sidebarLabel', app.disabledDocs.all()) + this.tmpl('sidebarPickerNote') + this.tmpl('sidebarSave'));
       this.refreshElements();
       this.delay(function() {
         this.el.offsetWidth;

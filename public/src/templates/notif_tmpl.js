@@ -16,7 +16,11 @@
   };
 
   app.templates.notifError = function() {
-    return textNotif(" Oops, an error occured. ", " Try <a href=\"javascript:app.reload()\">reloading</a>, and if the problem persists,\n<a href=\"javascript:app.reset()\">resetting the app</a>.<br>\nYou can also report this issue on <a href=\"https://github.com/Thibaut/devdocs/issues/new\" target=\"_blank\">GitHub</a>. ");
+    return textNotif(" Oops, an error occured. ", " Try <a href=\"javascript:app.reload()\">reloading</a>, and if the problem persists,\n<a href=\"javascript:if(confirm('Are you sure you want to reset DevDocs?'))app.reset()\">resetting the app</a>.<br>\nYou can also report this issue on <a href=\"https://github.com/Thibaut/devdocs/issues/new\" target=\"_blank\">GitHub</a>. ");
+  };
+
+  app.templates.notifQuotaExceeded = function() {
+    return textNotif(" Oops, the offline database has exceeded its size limitation. ", " Unfortunately this quota can't be detected programmatically, and the database can't be opened while over the quota, so it had to be reset. ");
   };
 
   app.templates.notifInvalidLocation = function() {

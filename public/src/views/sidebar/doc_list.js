@@ -9,6 +9,7 @@
 
     function DocList() {
       this.afterRoute = __bind(this.afterRoute, this);
+      this.onEnable = __bind(this.onEnable, this);
       this.onClick = __bind(this.onClick, this);
       this.onClose = __bind(this.onClose, this);
       this.onOpen = __bind(this.onOpen, this);
@@ -110,16 +111,18 @@
       this.refreshElements();
     };
 
-    DocList.prototype.reset = function() {
-      var model, _ref;
+    DocList.prototype.reset = function(options) {
+      var _ref;
+      if (options == null) {
+        options = {};
+      }
       this.listSelect.deselect();
       if ((_ref = this.listFocus) != null) {
         _ref.blur();
       }
       this.listFold.reset();
-      if (model = app.router.context.type || app.router.context.entry) {
-        this.reveal(model);
-        this.select(model);
+      if (options.revealCurrent) {
+        this.revealCurrent();
       }
     };
 
@@ -156,6 +159,14 @@
       this.scrollTo(model);
     };
 
+    DocList.prototype.revealCurrent = function() {
+      var model;
+      if (model = app.router.context.type || app.router.context.entry) {
+        this.reveal(model);
+        this.select(model);
+      }
+    };
+
     DocList.prototype.openDoc = function(doc) {
       this.listFold.open(this.find("[data-slug='" + doc.slug + "']"));
     };
@@ -177,23 +188,38 @@
       });
     };
 
-    DocList.prototype.onClick = function(event) {
-      if (!(this.disabledTitle && $.hasChild(this.disabledTitle, event.target))) {
-        return;
-      }
-      $.stopEvent(event);
+    DocList.prototype.toggleDisabled = function() {
       if (this.disabledTitle.classList.contains('open-title')) {
         this.removeDisabledList();
-        return app.settings.set('hideDisabled', true);
+        app.settings.set('hideDisabled', true);
       } else {
         this.appendDisabledList();
-        return app.settings.set('hideDisabled', false);
+        app.settings.set('hideDisabled', false);
       }
+    };
+
+    DocList.prototype.onClick = function(event) {
+      var doc, slug;
+      if (this.disabledTitle && $.hasChild(this.disabledTitle, event.target)) {
+        $.stopEvent(event);
+        this.toggleDisabled();
+      } else if (slug = event.target.getAttribute('data-enable')) {
+        $.stopEvent(event);
+        doc = app.disabledDocs.findBy('slug', slug);
+        app.enableDoc(doc, this.onEnable, this.onEnable);
+      }
+    };
+
+    DocList.prototype.onEnable = function() {
+      this.reset();
+      this.render();
     };
 
     DocList.prototype.afterRoute = function(route, context) {
       if (context.init) {
-        this.reset();
+        this.reset({
+          revealCurrent: true
+        });
       } else {
         this.select(context.type || context.entry);
       }

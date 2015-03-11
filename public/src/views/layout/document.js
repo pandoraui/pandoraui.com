@@ -21,12 +21,27 @@
 
     Document.prototype.init = function() {
       this.addSubview(this.nav = new app.views.Nav, this.addSubview(this.sidebar = new app.views.Sidebar));
+      //if (app.views.Resizer.isSupported()) {
+      //  this.addSubview(this.resizer = new app.views.Resizer);
+      //}
       this.addSubview(this.content = new app.views.Content);
       if (!(app.isSingleDoc() || app.isMobile())) {
         this.addSubview(this.path = new app.views.Path);
       }
       this.setTitle();
       this.activate();
+    };
+
+    Document.prototype.toggleLight = function() {
+      var alt, css, _ref;
+      css = $('link[rel="stylesheet"][data-alt]');
+      alt = css.getAttribute('data-alt');
+      css.setAttribute('data-alt', css.getAttribute('href'));
+      css.setAttribute('href', alt);
+      app.settings.setDark(alt.indexOf('dark') > 0);
+      if ((_ref = app.appCache) != null) {
+        _ref.updateInBackground();
+      }
     };
 
     Document.prototype.setTitle = function(title) {

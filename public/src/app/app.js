@@ -11,19 +11,19 @@
     views: {},
     init: function() {
       console.log("init");
-      // try {
-      //   this.initErrorTracking();
-      // } catch (_error) {
+      try {
+        this.initErrorTracking();
+      } catch (_error) {
 
-      // }
-      // if (!this.browserCheck()) {
-      //   return;
-      // }
+      }
+      if (!this.browserCheck()) {
+        return;
+      }
       this.showLoading();
       this.store = new Store;
-      // if (app.AppCache.isEnabled()) {
-      //   this.appCache = new app.AppCache;
-      // }
+      if (app.AppCache.isEnabled()) {
+        this.appCache = new app.AppCache;
+      }
       this.settings = new app.Settings(this.store);
       this.docs = new app.collections.Docs;
       this.disabledDocs = new app.collections.Docs;
@@ -31,12 +31,12 @@
       this.router = new app.Router;
       this.shortcuts = new app.Shortcuts;
       this.document = new app.views.Document;
-      // if (this.isMobile()) {
-      //   this.mobile = new app.views.Mobile;
-      // }
-      // if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
-      //   document.documentElement.style.height = "" + window.innerHeight + "px";
-      // }
+      if (this.isMobile()) {
+        this.mobile = new app.views.Mobile;
+      }
+      if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+        document.documentElement.style.height = "" + window.innerHeight + "px";
+      }
       if (this.DOC) {
         this.bootOne();
       } else if (this.DOCS) {
@@ -45,36 +45,40 @@
         this.onBootError();
       }
     },
-    // browserCheck: function() {
-    //   if (this.isSupportedBrowser()) {
-    //     return true;
-    //   }
-    //   document.body.className = '';
-    //   document.body.innerHTML = app.templates.unsupportedBrowser;
-    //   return false;
-    // },
-    // initErrorTracking: function() {
-    //   if (this.isInvalidLocation()) {
-    //     new app.views.Notif('InvalidLocation');
-    //   } else {
-    //     if (this.config.sentry_dsn) {
-    //       Raven.config(this.config.sentry_dsn, {
-    //         whitelistUrls: [/devdocs/],
-    //         includePaths: [/devdocs/],
-    //         ignoreErrors: [/dpQuery/]
-    //       }).install();
-    //     }
-    //     this.previousErrorHandler = onerror;
-    //     window.onerror = this.onWindowError.bind(this);
-    //   }
-    // },
+    browserCheck: function() {
+      if (this.isSupportedBrowser()) {
+        return true;
+      }
+      document.body.className = '';
+      document.body.innerHTML = app.templates.unsupportedBrowser;
+      return false;
+    },
+    initErrorTracking: function() {
+      if (this.isInvalidLocation()) {
+        new app.views.Notif('InvalidLocation');
+      } else {
+        if (this.config.sentry_dsn) {
+          Raven.config(this.config.sentry_dsn, {
+            whitelistUrls: [/devdocs/],
+            includePaths: [/devdocs/],
+            ignoreErrors: [/dpQuery/, /NPObject/],
+            tags: {
+              mode: this.DOC ? 'single' : 'full',
+              iframe: (window.top !== window).toString()
+            }
+          }).install();
+        }
+        this.previousErrorHandler = onerror;
+        window.onerror = this.onWindowError.bind(this);
+      }
+    },
     bootOne: function() {
       console.log('Doc length: '+this.DOC.length);
       this.doc = new app.models.Doc(this.DOC);
       this.docs.reset([this.doc]);
-      // this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
-      //   readCache: true
-      // });
+      this.doc.load(this.start.bind(this), this.onBootError.bind(this), {
+        readCache: true
+      });
       new app.views.Notice('singleDoc', this.doc);
       delete this.DOC;
     },
@@ -98,17 +102,11 @@
     },
     start: function() {
       console.log('start');
-      var doc, type, _i, _j, _len, _len1, _ref, _ref1;
+      var doc, _i, _len, _ref;
       _ref = this.docs.all();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         doc = _ref[_i];
-        this.entries.add(doc.toEntry());
-        _ref1 = doc.types.all();
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          type = _ref1[_j];
-          this.entries.add(type.toEntry());
-        }
-        this.entries.add(doc.entries.all());
+        this.initDoc(doc);
       }
       this.db = new app.DB();
       this.trigger('ready');
@@ -118,6 +116,45 @@
         this.welcomeBack();
       }
       this.removeEvent('ready bootError');
+    },
+    initDoc: function(doc) {
+      var type, _i, _len, _ref;
+      this.entries.add(doc.toEntry());
+      _ref = doc.types.all();
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        type = _ref[_i];
+        this.entries.add(type.toEntry());
+      }
+      this.entries.add(doc.entries.all());
+    },
+    enableDoc: function(doc, _onSuccess, onError) {
+      var onSuccess;
+      onSuccess = (function(_this) {
+        return function() {
+          var _ref;
+          _this.disabledDocs.remove(doc);
+          _this.docs.add(doc);
+          _this.docs.sort();
+          _this.initDoc(doc);
+          _this.settings.setDocs((function() {
+            var _i, _len, _ref, _results;
+            _ref = this.docs.all();
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              doc = _ref[_i];
+              _results.push(doc.slug);
+            }
+            return _results;
+          }).call(_this));
+          _onSuccess();
+          if ((_ref = _this.appCache) != null) {
+            _ref.updateInBackground();
+          }
+        };
+      })(this);
+      doc.load(onSuccess, onError, {
+        writeCache: true
+      });
     },
     welcomeBack: function() {
       var visitCount;
@@ -134,20 +171,7 @@
         });
       }
       new app.views.News();
-      return this.checkForDocUpdates();
-    },
-    checkForDocUpdates: function() {
-      if (this.settings.get('autoUpdate')) {
-        return this.docs.updateInBackground();
-      } else {
-        return this.docs.checkForUpdates(function(i) {
-          if (i > 0) {
-            return new app.views.Notif('UpdateDocs', {
-              autoHide: null
-            });
-          }
-        });
-      }
+      return this.updateChecker = new app.UpdateChecker();
     },
     reload: function() {
       this.docs.clearCache();
@@ -159,12 +183,14 @@
       }
     },
     reset: function() {
-      var _ref;
+      var _ref, _ref1;
       this.store.clear();
       this.settings.reset();
-      this.db.reset();
-      if ((_ref = this.appCache) != null) {
-        _ref.update();
+      if ((_ref = this.db) != null) {
+        _ref.reset();
+      }
+      if ((_ref1 = this.appCache) != null) {
+        _ref1.update();
       }
       window.location = '/';
     },
@@ -186,6 +212,12 @@
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       this.trigger('bootError');
       this.hideLoading();
+    },
+    onQuotaExceeded: function() {
+      new app.views.Notif('QuotaExceeded', {
+        autoHide: null
+      });
+      return Raven.captureMessage('QuotaExceededError');
     },
     onWindowError: function() {
       var args;

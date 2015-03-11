@@ -20,7 +20,9 @@
       if (!this.useIndexedDB) {
         return fn();
       }
-      this.callbacks.push(fn);
+      if (fn) {
+        this.callbacks.push(fn);
+      }
       if (this.open) {
         return;
       }
@@ -59,11 +61,19 @@
     };
 
     DB.prototype.onOpenError = function(event) {
+      var _ref, _ref1;
       if (event != null) {
         event.preventDefault();
       }
-      this.useIndexedDB = this.open = false;
-      this.runCallbacks();
+      this.open = false;
+      if ((event != null ? (_ref = event.target) != null ? (_ref1 = _ref.error) != null ? _ref1.name : void 0 : void 0 : void 0) === 'QuotaExceededError') {
+        this.reset();
+        this.db();
+        app.onQuotaExceeded();
+      } else {
+        this.useIndexedDB = false;
+        this.runCallbacks();
+      }
     };
 
     DB.prototype.runCallbacks = function(db) {
@@ -75,7 +85,9 @@
 
     DB.prototype.onUpgradeNeeded = function(event) {
       var db, doc, _i, _j, _len, _len1, _ref, _ref1;
-      db = event.target.result;
+      if (!(db = event.target.result)) {
+        return;
+      }
       if (!db.objectStoreNames.contains('docs')) {
         db.createObjectStore('docs');
       }

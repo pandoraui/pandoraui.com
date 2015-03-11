@@ -46,7 +46,7 @@
     };
 
     Doc.prototype.fileUrl = function(path) {
-      return "" + app.config.docs_host + (this.fullPath(path));
+      return "" + app.config.docs_host + (this.fullPath(path));// + "?" + this.mtime;
     };
 
     Doc.prototype.dbUrl = function() {

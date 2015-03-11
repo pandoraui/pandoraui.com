@@ -41,20 +41,8 @@
     _match = this.match.bind(this);
     this.match = (function(_this) {
       return function() {
-        var entries, score, _i, _ref;
         if (_this.matcher) {
           console.timeEnd(_this.matcher.name);
-          if (_this.matcher.name === 'exactMatch') {
-            _ref = _this.scoreMap;
-            for (score = _i = _ref.length - 1; _i >= 0; score = _i += -1) {
-              entries = _ref[score];
-              if (entries) {
-                console.log('' + score + ': ' + entries.map(function(entry) {
-                  return entry.text;
-                }).join("\n    "));
-              }
-            }
-          }
         }
         return _match();
       };
@@ -67,8 +55,8 @@
     _end = this.end.bind(this);
     this.end = function() {
       console.log("Results: " + this.totalResults);
-      console.groupEnd();
       console.timeEnd('Total');
+      console.groupEnd();
       return _end();
     };
     _kill = this.kill.bind(this);
@@ -84,6 +72,8 @@
       return _kill();
     };
   };
+
+  $.extend(app.Searcher, _super);
 
   _proto.constructor = app.Searcher;
 

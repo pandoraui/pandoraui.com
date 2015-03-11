@@ -41,8 +41,8 @@
     };
 
     Shortcuts.prototype.handleKeydownEvent = function(event) {
-      var _ref;
-      if (!event.target.form && (65 <= (_ref = event.which) && _ref <= 90)) {
+      var _ref, _ref1;
+      if (!event.target.form && ((48 <= (_ref = event.which) && _ref <= 57) || (65 <= (_ref1 = event.which) && _ref1 <= 90))) {
         this.trigger('typing');
         return;
       }
@@ -57,8 +57,11 @@
         case 27:
           return this.trigger('escape');
         case 32:
-          this.trigger('pageDown');
-          return false;
+          if (!this.lastKeypress || this.lastKeypress < Date.now() - 1000) {
+            this.trigger('pageDown');
+            return false;
+          }
+          break;
         case 33:
           return this.trigger('pageUp');
         case 34:
@@ -160,6 +163,8 @@
       if (event.which === 63 && !event.target.value) {
         this.trigger('help');
         return false;
+      } else {
+        return this.lastKeypress = Date.now();
       }
     };
 

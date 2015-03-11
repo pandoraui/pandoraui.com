@@ -4,26 +4,12 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   app.models.Entry = (function(_super) {
-    var DOT_REGEXP, EVENT_REGEXP, PARANTHESES_REGEXP, SEPARATORS_REGEXP;
-
     __extends(Entry, _super);
-
-    SEPARATORS_REGEXP = /\:?\ |#|::|->/g;
-
-    PARANTHESES_REGEXP = /\(.*?\)$/;
-
-    EVENT_REGEXP = /\ event$/;
-
-    DOT_REGEXP = /\.+/g;
 
     function Entry() {
       Entry.__super__.constructor.apply(this, arguments);
-      this.text = this.searchValue();
+      this.text = app.Searcher.normalizeString(this.name);
     }
-
-    Entry.prototype.searchValue = function() {
-      return this.name.toLowerCase().replace('...', ' ').replace(EVENT_REGEXP, '').replace(SEPARATORS_REGEXP, '.').replace(DOT_REGEXP, '.').replace(PARANTHESES_REGEXP, '').trim();
-    };
 
     Entry.prototype.fullPath = function() {
       return this.doc.fullPath(this.isIndex() ? '' : this.path);

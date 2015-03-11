@@ -110,7 +110,7 @@
   };
 
   app.Searcher = (function() {
-    var CHUNK_SIZE, DEFAULTS;
+    var CHUNK_SIZE, DEFAULTS, DOT_REGEXP, ELLIPSIS, EMPTY_STRING, EVENT_REGEXP, PARANTHESES_REGEXP, SEPARATORS_REGEXP, WHITESPACE_REGEXP;
 
     $.extend(Searcher.prototype, Events);
 
@@ -119,6 +119,24 @@
     DEFAULTS = {
       max_results: app.config.max_results,
       fuzzy_min_length: 3
+    };
+
+    SEPARATORS_REGEXP = /\:?\ |#|::|->/g;
+
+    PARANTHESES_REGEXP = /\(.*?\)$/;
+
+    EVENT_REGEXP = /\ event$/;
+
+    DOT_REGEXP = /\.+/g;
+
+    WHITESPACE_REGEXP = /\s/g;
+
+    EMPTY_STRING = '';
+
+    ELLIPSIS = '...';
+
+    Searcher.normalizeString = function(string) {
+      return string.toLowerCase().replace(ELLIPSIS, EMPTY_STRING).replace(EVENT_REGEXP, EMPTY_STRING).replace(SEPARATORS_REGEXP, SEPARATOR).replace(DOT_REGEXP, SEPARATOR).replace(PARANTHESES_REGEXP, EMPTY_STRING).replace(WHITESPACE_REGEXP, EMPTY_STRING);
     };
 
     function Searcher(options) {
@@ -144,7 +162,7 @@
     };
 
     Searcher.prototype.setup = function() {
-      query = this.query = this.normalizeQuery(this.query);
+      query = this.query = this.constructor.normalizeString(this.query);
       queryLength = query.length;
       this.dataLength = this.data.length;
       this.matchers = [exactMatch];
@@ -271,10 +289,6 @@
 
     Searcher.prototype.delay = function(fn) {
       return this.timeout = setTimeout(fn, 1);
-    };
-
-    Searcher.prototype.normalizeQuery = function(string) {
-      return string.replace(/\s/g, '').toLowerCase();
     };
 
     Searcher.prototype.queryToFuzzyRegexp = function(string) {

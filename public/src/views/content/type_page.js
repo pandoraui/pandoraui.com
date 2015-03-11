@@ -21,7 +21,6 @@
 
     TypePage.prototype.render = function(type) {
       this.type = type;
-      this.type = type;
       this.html(this.tmpl('typePage', this.type));
     };
 

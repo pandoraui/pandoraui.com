@@ -70,7 +70,9 @@
     Sidebar.prototype.showDocList = function(reset) {
       this.show(this.docList);
       if (reset === true) {
-        this.docList.reset();
+        this.docList.reset({
+          revealCurrent: true
+        });
         this.search.reset();
       }
     };
@@ -113,10 +115,13 @@
     };
 
     Sidebar.prototype.onClick = function(event) {
-      var _base;
+      var _base, _base1;
       if (typeof (_base = event.target).hasAttribute === "function" ? _base.hasAttribute('data-reset-list') : void 0) {
         $.stopEvent(event);
         this.reset();
+      } else if (typeof (_base1 = event.target).hasAttribute === "function" ? _base1.hasAttribute('data-light') : void 0) {
+        $.stopEvent(event);
+        app.document.toggleLight();
       }
     };
 

@@ -114,14 +114,17 @@
       }
       doc.getInstallStatus((function(_this) {
         return function(status) {
+          var el;
           if (!_this.activated) {
             return;
           }
-          _this.docEl(doc).outerHTML = _this.renderDoc(doc, status);
-          $.highlight(_this.docEl(doc), {
-            className: '_highlight'
-          });
-          _this.refreshLinks();
+          if (el = _this.docEl(doc)) {
+            el.outerHTML = _this.renderDoc(doc, status);
+            $.highlight(el, {
+              className: '_highlight'
+            });
+            _this.refreshLinks();
+          }
         };
       })(this));
     };
@@ -131,8 +134,9 @@
       if (!this.activated) {
         return;
       }
-      el = this.docEl(doc);
-      el.lastElementChild.textContent = 'Error';
+      if (el = this.docEl(doc)) {
+        el.lastElementChild.textContent = 'Error';
+      }
     };
 
     OfflinePage.prototype.onChange = function(event) {

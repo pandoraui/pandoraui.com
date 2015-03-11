@@ -16,18 +16,26 @@
     function AppCache() {
       this.onUpdateReady = __bind(this.onUpdateReady, this);
       this.onProgress = __bind(this.onProgress, this);
-      this.checkForUpdate = __bind(this.checkForUpdate, this);
       this.cache = applicationCache;
+      this.notifyUpdate = true;
       if (this.cache.status === this.cache.UPDATEREADY) {
         this.onUpdateReady();
       }
       $.on(this.cache, 'progress', this.onProgress);
       $.on(this.cache, 'updateready', this.onUpdateReady);
-      this.lastCheck = Date.now();
-      $.on(window, 'focus', this.checkForUpdate);
     }
 
     AppCache.prototype.update = function() {
+      this.notifyUpdate = true;
+      try {
+        this.cache.update();
+      } catch (_error) {
+
+      }
+    };
+
+    AppCache.prototype.updateInBackground = function() {
+      this.notifyUpdate = false;
       try {
         this.cache.update();
       } catch (_error) {
@@ -36,18 +44,10 @@
     };
 
     AppCache.prototype.reload = function() {
-      this.reloading = true;
       $.on(this.cache, 'updateready noupdate error', function() {
         return window.location = '/';
       });
-      this.update();
-    };
-
-    AppCache.prototype.checkForUpdate = function() {
-      if (Date.now() - this.lastCheck > 86400e3) {
-        this.lastCheck = Date.now();
-        this.update();
-      }
+      this.updateInBackground();
     };
 
     AppCache.prototype.onProgress = function(event) {
@@ -55,12 +55,9 @@
     };
 
     AppCache.prototype.onUpdateReady = function() {
-      if (!this.reloading) {
-        new app.views.Notif('UpdateReady', {
-          autoHide: null
-        });
+      if (this.notifyUpdate) {
+        this.trigger('updateready');
       }
-      this.trigger('updateready');
     };
 
     return AppCache;

@@ -12,7 +12,9 @@
     link = "<a href=\"" + (doc.fullPath()) + "\" class=\"_list-item _icon-" + doc.slug + " ";
     link += options.disabled ? '_list-disabled' : '_list-dir';
     link += "\" data-slug=\"" + doc.slug + "\">";
-    if (!options.disabled) {
+    if (options.disabled) {
+      link += "<span class=\"_list-enable\" data-enable=\"" + doc.slug + "\">Enable</span>";
+    } else {
       link += "<span class=\"_list-arrow\"></span>";
     }
     if (doc.version) {
@@ -34,9 +36,12 @@
   };
 
   templates.sidebarNoResults = function() {
-    var info;
-    info = app.isSingleDoc() || !app.disabledDocs.isEmpty() ? '' : "<span class=\"_list-noresults-note\">Note: documentations must be <a class=\"_list-noresults-link\" data-pick-docs>enabled</a> to appear in the search.</span>";
-    return " <div class=\"_list-noresults\">No results. " + info + "</div> ";
+    var html;
+    html = " <div class=\"_list-note\">No results.</div> ";
+    if (!(app.isSingleDoc() || app.disabledDocs.isEmpty())) {
+      html += "<div class=\"_list-note\">Note: documentations must be <a class=\"_list-note-link\" data-pick-docs>enabled</a> to appear in the search.</div>";
+    }
+    return html;
   };
 
   templates.sidebarPageLink = function(count) {
@@ -69,14 +74,14 @@
     return "<h6 class=\"_list-title\"><span class=\"_list-arrow\"></span>Disabled (" + options.count + ")</h6>";
   };
 
-  templates.sidebarVote = '<a href="https://trello.com/b/6BmTulfx/devdocs-documentation" class="_list-link" target="_blank">Vote for new documentation</a>';
+  templates.sidebarPickerNote = "<div class=\"_list-note\">Tip: for faster and better search results, select only the docs you need.</div>\n<a href=\"https://trello.com/b/6BmTulfx/devdocs-documentation\" class=\"_list-link\" target=\"_blank\">Vote for new documentation</a>";
 
   sidebarFooter = function(html) {
     return "<div class=\"_sidebar-footer\">" + html + "</div>";
   };
 
   templates.sidebarSettings = function() {
-    return sidebarFooter("<a class=\"_sidebar-footer-link _sidebar-footer-edit\" data-pick-docs>Select documentation</a>");
+    return sidebarFooter("<a class=\"_sidebar-footer-link _sidebar-footer-light\" title=\"Toggle light\" data-light></a>\n<a class=\"_sidebar-footer-link _sidebar-footer-edit\" data-pick-docs>Select documentation</a>");
   };
 
   templates.sidebarSave = function() {

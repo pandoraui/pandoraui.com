@@ -40,6 +40,10 @@
       }
     };
 
+    Collection.prototype.remove = function(model) {
+      this.models.splice(this.models.indexOf(model), 1);
+    };
+
     Collection.prototype.size = function() {
       return this.models.length;
     };

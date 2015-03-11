@@ -52,7 +52,14 @@
     };
 
     TypeList.prototype.render = function() {
-      return this.html(this.tmpl('sidebarType', this.doc.types.all()));
+      var group, html, _i, _len, _ref;
+      html = '';
+      _ref = this.doc.types.groups();
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        group = _ref[_i];
+        html += this.tmpl('sidebarType', group);
+      }
+      return this.html(html);
     };
 
     TypeList.prototype.onOpen = function(event) {

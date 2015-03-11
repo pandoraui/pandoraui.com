@@ -1,11 +1,15 @@
 
 (function() {
   app.Settings = (function() {
-    var DOCS_KEY, SETTINGS_KEY;
+    var DARK_KEY, DOCS_KEY, SETTINGS_KEY, SIZE_KEY;
 
     SETTINGS_KEY = 'settings';
 
     DOCS_KEY = 'docs';
+
+    DARK_KEY = 'dark';
+
+    SIZE_KEY = 'size';
 
     Settings.defaults = function() {
       return {
@@ -65,7 +69,7 @@
       var _ref,
           default_docs = app.config.default_docs;
       try {
-        var default_docs = ((_ref = Cookies.get(DOCS_KEY)) != null ? _ref.split('/') : void 0) || default_docs;
+        default_docs = ((_ref = Cookies.get(DOCS_KEY)) != null ? _ref.split('/') : void 0) || default_docs;
         console.log(default_docs);
         return default_docs;
       } catch (_error) {
@@ -85,9 +89,41 @@
       }
     };
 
+    Settings.prototype.setDark = function(value) {
+      try {
+        if (value) {
+          Cookies.set(DARK_KEY, '1', {
+            path: '/',
+            expires: 1e8
+          });
+        } else {
+          Cookies.expire(DARK_KEY);
+        }
+      } catch (_error) {
+
+      }
+    };
+
+    Settings.prototype.setSize = function(value) {
+      try {
+        Cookies.set(SIZE_KEY, value, {
+          path: '/',
+          expires: 1e8
+        });
+      } catch (_error) {
+
+      }
+    };
+
     Settings.prototype.reset = function() {
       try {
         Cookies.expire(DOCS_KEY);
+      } catch (_error) {}
+      try {
+        Cookies.expire(DARK_KEY);
+      } catch (_error) {}
+      try {
+        Cookies.expire(SIZE_KEY);
       } catch (_error) {}
       try {
         this.store.del(SETTINGS_KEY);
